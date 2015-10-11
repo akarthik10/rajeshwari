@@ -77,7 +77,7 @@
     <td width="650" style="border-bottom:#ccc 1px solid; padding:10px 20px;">
         <table  border="0" cellspacing="0" cellpadding="0">
             <tr>
-            	<td width="550" style="padding:10px 0px;"><?php echo Yii::t('fees','Reciept No'); ?>:<?php echo $receipt_no;?></td>
+            	<td width="550" style="padding:10px 0px;"><?php echo Yii::t('fees','Reciept No'); ?>:<?php echo $receipt_no;?><?php if(isset($receipt_type) && $receipt_type=="student_copy"){ echo " (student copy)";} else if(isset($receipt_type) && $receipt_type=="office_copy"){echo " (office copy)"; } ?></td>
                 <td>
                 	<?php echo Yii::t('fees','Date'); ?>: <?php 
 					$settings=UserSettings::model()->findByAttributes(array('user_id'=>Yii::app()->user->id));

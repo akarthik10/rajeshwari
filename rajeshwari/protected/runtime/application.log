@@ -5060,3 +5060,26 @@ Stack trace:
 #20 C:\wamp\www\rajeshwari\rajeshwari\core\base\CApplication.php(158): CWebApplication->processRequest()
 #21 C:\wamp\www\rajeshwari\rajeshwari\index.php(51): CApplication->run()
 #22 {main} REQUEST_URI=/rajeshwari/rajeshwari/index.php?r=fees/financeFees/transaction&collection=5&student=2558/32
+2015/10/03 15:17:11 [error] [exception.CDbException] SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+
+2015/10/03 15:17:11 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection.' in C:\wamp\www\rajeshwari\rajeshwari\core\db\CDbConnection.php:370
+Stack trace:
+#0 C:\wamp\www\rajeshwari\rajeshwari\core\db\CDbConnection.php(313): CDbConnection->open()
+#1 C:\wamp\www\rajeshwari\rajeshwari\core\db\CDbConnection.php(291): CDbConnection->setActive(true)
+#2 C:\wamp\www\rajeshwari\rajeshwari\core\base\CModule.php(372): CDbConnection->init()
+#3 C:\wamp\www\rajeshwari\rajeshwari\core\web\auth\CDbAuthManager.php(581): CModule->getComponent('db')
+#4 C:\wamp\www\rajeshwari\rajeshwari\core\web\auth\CDbAuthManager.php(58): CDbAuthManager->getDbConnection()
+#5 C:\wamp\www\rajeshwari\rajeshwari\core\base\CModule.php(372): CDbAuthManager->init()
+#6 C:\wamp\www\rajeshwari\rajeshwari\core\web\CWebApplication.php(180): CModule->getComponent('authManager')
+#7 C:\wamp\www\rajeshwari\rajeshwari\protected\modules\rights\components\RAuthorizer.php(27): CWebApplication->getAuthManager()
+#8 C:\wamp\www\rajeshwari\rajeshwari\core\base\CModule.php(372): RAuthorizer->init()
+#9 C:\wamp\www\rajeshwari\rajeshwari\protected\modules\rights\RightsModule.php(192): CModule->getComponent('authorizer')
+#10 C:\wamp\www\rajeshwari\rajeshwari\protected\modules\rights\components\Rights.php(287): RightsModule->getAuthorizer()
+#11 C:\wamp\www\rajeshwari\rajeshwari\protected\modules\rights\components\Rights.php(60): Rights::getAuthorizer()
+#12 C:\wamp\www\rajeshwari\rajeshwari\protected\modules\messages\MessageModule.php(50): Rights::getAssignedRoles(NULL)
+#13 C:\wamp\www\rajeshwari\rajeshwari\core\web\CController.php(255): MessageModule->beforeControllerAction(Object(IndexController), Object(CInlineAction))
+#14 C:\wamp\www\rajeshwari\rajeshwari\core\web\CWebApplication.php(277): CController->run('')
+#15 C:\wamp\www\rajeshwari\rajeshwari\core\web\CWebApplication.php(136): CWebApplication->runController('')
+#16 C:\wamp\www\rajeshwari\rajeshwari\core\base\CApplication.php(158): CWebApplication->processRequest()
+#17 C:\wamp\www\rajeshwari\rajeshwari\index.php(51): CApplication->run()
+#18 {main} REQUEST_URI=/rajeshwari/rajeshwari/

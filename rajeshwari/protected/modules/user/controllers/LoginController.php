@@ -28,17 +28,17 @@ class LoginController extends Controller
 					       foreach($roles as $role)
 						   if(sizeof($roles)==1 and $role->name == 'Company')
 						   {
-							   $this->redirect(array('/mailbox'));
+							   $this->redirect(array('/students'));
 							   
 						   }
 						   if(sizeof($roles)==1 and $role->name == 'Trainee')
 						   {
-							   $this->redirect(array('/mailbox'));
+							   $this->redirect(array('/students'));
 							   
 						   }
 						   if(sizeof($roles)==1 and $role->name == 'Employee')
 						   {
-							   $this->redirect(array('/mailbox'));
+							   $this->redirect(array('/students'));
 							   
 						   } 
 						 if(Yii::app()->user->checkAccess('admin'))
@@ -50,7 +50,7 @@ class LoginController extends Controller
 						 }
 						  else
 					      {
-							 $this->redirect(array('/mailbox'));
+							 $this->redirect(array('/students'));
 						  }
 				}
 			}

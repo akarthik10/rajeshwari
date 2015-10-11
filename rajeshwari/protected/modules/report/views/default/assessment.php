@@ -217,17 +217,7 @@ $this->breadcrumbs=array(
 
 
 								</tr>
-								<tr>
-									<td style="border:none;<?php if($score->is_failed == 1){  ?>color:#F00;<?php }?>">
-										<?php 
-										if($score->remarks!=NULL)
-											echo $score->remarks;
-										else
-											echo '-';
-										?>
-									</td>
-
-								</tr>
+								
 							</table>
 							<!-- End Mark and Remarks Column -->
 						<?php

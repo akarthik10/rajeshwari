@@ -5200,3 +5200,147 @@ Stack trace:
 #21 C:\wamp\www\rajeshwari\rajeshwari\index.php(51): CApplication->run()
 #22 {main} REQUEST_URI=/rajeshwari/rajeshwari/index.php
 2015/11/21 18:18:09 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".
+2016/01/17 14:10:57 [error] [exception.CDbException] SQLSTATE[HY000] [1049] Unknown database 'school_db'
+2016/01/17 14:10:57 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection.' in E:\xampp\htdocs\rajeshwari\rajeshwari\core\db\CDbConnection.php:370
+Stack trace:
+#0 E:\xampp\htdocs\rajeshwari\rajeshwari\core\db\CDbConnection.php(313): CDbConnection->open()
+#1 E:\xampp\htdocs\rajeshwari\rajeshwari\core\db\CDbConnection.php(291): CDbConnection->setActive(true)
+#2 E:\xampp\htdocs\rajeshwari\rajeshwari\core\base\CModule.php(372): CDbConnection->init()
+#3 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\auth\CDbAuthManager.php(581): CModule->getComponent('db')
+#4 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\auth\CDbAuthManager.php(58): CDbAuthManager->getDbConnection()
+#5 E:\xampp\htdocs\rajeshwari\rajeshwari\core\base\CModule.php(372): CDbAuthManager->init()
+#6 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CWebApplication.php(180): CModule->getComponent('authManager')
+#7 E:\xampp\htdocs\rajeshwari\rajeshwari\protected\modules\rights\components\RAuthorizer.php(27): CWebApplication->getAuthManager()
+#8 E:\xampp\htdocs\rajeshwari\rajeshwari\core\base\CModule.php(372): RAuthorizer->init()
+#9 E:\xampp\htdocs\rajeshwari\rajeshwari\protected\modules\rights\RightsModule.php(192): CModule->getComponent('authorizer')
+#10 E:\xampp\htdocs\rajeshwari\rajeshwari\protected\modules\rights\components\Rights.php(287): RightsModule->getAuthorizer()
+#11 E:\xampp\htdocs\rajeshwari\rajeshwari\protected\modules\rights\components\Rights.php(60): Rights::getAuthorizer()
+#12 E:\xampp\htdocs\rajeshwari\rajeshwari\protected\modules\messages\MessageModule.php(50): Rights::getAssignedRoles(NULL)
+#13 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(255): MessageModule->beforeControllerAction(Object(IndexController), Object(CInlineAction))
+#14 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CWebApplication.php(277): CController->run('')
+#15 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CWebApplication.php(136): CWebApplication->runController('')
+#16 E:\xampp\htdocs\rajeshwari\rajeshwari\core\base\CApplication.php(158): CWebApplication->processRequest()
+#17 E:\xampp\htdocs\rajeshwari\rajeshwari\index.php(51): CApplication->run()
+#18 {main} REQUEST_URI=/rajeshwari/rajeshwari/
+2016/01/17 14:11:04 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "E:\xampp\htdocs\rajeshwari\rajeshwari\assets" is invalid. Please make sure the directory exists and is writable by the Web server process.' in E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CAssetManager.php:112
+Stack trace:
+#0 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CAssetManager.php(97): CAssetManager->setBasePath('E:\\xampp\\htdocs...')
+#1 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CAssetManager.php(207): CAssetManager->getBasePath()
+#2 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CClientScript.php(453): CAssetManager->publish('E:\\xampp\\htdocs...')
+#3 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CClientScript.php(490): CClientScript->getCoreScriptUrl()
+#4 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CClientScript.php(306): CClientScript->getPackageBaseUrl('jquery')
+#5 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CClientScript.php(197): CClientScript->renderCoreScripts()
+#6 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(343): CClientScript->render('<!DOCTYPE html ...')
+#7 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(785): CController->processOutput('<!DOCTYPE html ...')
+#8 E:\xampp\htdocs\rajeshwari\rajeshwari\protected\modules\Install\controllers\DefaultController.php(131): CController->render('step1', Array)
+#9 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\actions\CInlineAction.php(50): DefaultController->actionStep1()
+#10 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(300): CInlineAction->runWithParams(Array)
+#11 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(278): CController->runAction(Object(CInlineAction))
+#12 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CWebApplication.php(277): CController->run('step1')
+#14 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CWebApplication.php(136): CWebApplication->runController('Install/default...')
+#15 E:\xampp\htdocs\rajeshwari\rajeshwari\core\base\CApplication.php(158): CWebApplication->processRequest()
+#16 E:\xampp\htdocs\rajeshwari\rajeshwari\install.php(40): CApplication->run()
+#17 {main} REQUEST_URI=/rajeshwari/rajeshwari/install.php?r=Install/default/step1
+2016/01/17 14:12:21 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".
+2016/01/17 14:13:59 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'activity_feed' already exists. The SQL statement executed was: 
+
+
+
+
+
+
+
+--
+-- Database: `os_stable`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activity_feed`
+--
+
+CREATE TABLE `activity_feed` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `initiator_id` int(11) NOT NULL,
+  `activity_type` int(11) NOT NULL,
+  `goal_id` int(11) DEFAULT NULL,
+  `goal_name` varchar(120) DEFAULT NULL,
+  `field_name` varchar(120) DEFAULT NULL,
+  `initial_field_value` varchar(120) DEFAULT NULL,
+  `new_field_value` varchar(120) DEFAULT NULL,
+  `activity_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1.
+2016/01/17 14:13:59 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'activity_feed' already exists. The SQL statement executed was: 
+
+
+
+
+
+
+
+--
+-- Database: `os_stable`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activity_feed`
+--
+
+CREATE TABLE `activity_feed` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `initiator_id` int(11) NOT NULL,
+  `activity_type` int(11) NOT NULL,
+  `goal_id` int(11) DEFAULT NULL,
+  `goal_name` varchar(120) DEFAULT NULL,
+  `field_name` varchar(120) DEFAULT NULL,
+  `initial_field_value` varchar(120) DEFAULT NULL,
+  `new_field_value` varchar(120) DEFAULT NULL,
+  `activity_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1' in E:\xampp\htdocs\rajeshwari\rajeshwari\core\db\CDbCommand.php:336
+Stack trace:
+#0 E:\xampp\htdocs\rajeshwari\rajeshwari\protected\modules\Install\controllers\DefaultController.php(279): CDbCommand->execute()
+#1 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\actions\CInlineAction.php(50): DefaultController->actionStep3()
+#2 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(300): CInlineAction->runWithParams(Array)
+#3 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(278): CController->runAction(Object(CInlineAction))
+#4 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CWebApplication.php(277): CController->run('step3')
+#6 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CWebApplication.php(136): CWebApplication->runController('Install/default...')
+#7 E:\xampp\htdocs\rajeshwari\rajeshwari\core\base\CApplication.php(158): CWebApplication->processRequest()
+#8 E:\xampp\htdocs\rajeshwari\rajeshwari\install.php(40): CApplication->run()
+#9 {main} REQUEST_URI=/rajeshwari/rajeshwari/install.php?r=Install/default/step3
+2016/01/17 14:14:54 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".
+2016/01/17 14:17:11 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1049] Unknown database 'openlearn'' in E:\xampp\htdocs\rajeshwari\rajeshwari\core\db\CDbConnection.php:364
+Stack trace:
+#0 E:\xampp\htdocs\rajeshwari\rajeshwari\core\db\CDbConnection.php(313): CDbConnection->open()
+#1 E:\xampp\htdocs\rajeshwari\rajeshwari\core\base\CComponent.php(153): CDbConnection->setActive(true)
+#2 E:\xampp\htdocs\rajeshwari\rajeshwari\protected\modules\Install\controllers\DefaultController.php(268): CComponent->__set('active', true)
+#3 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\actions\CInlineAction.php(50): DefaultController->actionStep3()
+#4 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(300): CInlineAction->runWithParams(Array)
+#5 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(278): CController->runAction(Object(CInlineAction))
+#6 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CWebApplication.php(277): CController->run('step3')
+#8 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CWebApplication.php(136): CWebApplication->runController('Install/default...')
+#9 E:\xampp\htdocs\rajeshwari\rajeshwari\core\base\CApplication.php(158): CWebApplication->processRequest()
+#10 E:\xampp\htdocs\rajeshwari\rajeshwari\install.php(40): CApplication->run()
+#11 {main} REQUEST_URI=/rajeshwari/rajeshwari/install.php?r=Install/default/step3
+2016/01/17 14:17:15 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1049] Unknown database 'openlearn'' in E:\xampp\htdocs\rajeshwari\rajeshwari\core\db\CDbConnection.php:364
+Stack trace:
+#0 E:\xampp\htdocs\rajeshwari\rajeshwari\core\db\CDbConnection.php(313): CDbConnection->open()
+#1 E:\xampp\htdocs\rajeshwari\rajeshwari\core\base\CComponent.php(153): CDbConnection->setActive(true)
+#2 E:\xampp\htdocs\rajeshwari\rajeshwari\protected\modules\Install\controllers\DefaultController.php(268): CComponent->__set('active', true)
+#3 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\actions\CInlineAction.php(50): DefaultController->actionStep3()
+#4 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(300): CInlineAction->runWithParams(Array)
+#5 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(278): CController->runAction(Object(CInlineAction))
+#6 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CWebApplication.php(277): CController->run('step3')
+#8 E:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CWebApplication.php(136): CWebApplication->runController('Install/default...')
+#9 E:\xampp\htdocs\rajeshwari\rajeshwari\core\base\CApplication.php(158): CWebApplication->processRequest()
+#10 E:\xampp\htdocs\rajeshwari\rajeshwari\install.php(40): CApplication->run()
+#11 {main} REQUEST_URI=/rajeshwari/rajeshwari/install.php?r=Install/default/step3
+2016/01/17 14:17:24 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".

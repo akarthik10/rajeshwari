@@ -444,7 +444,7 @@ else
                     <td>
                     <?php 
                     if($model->photo_data==NULL)
-                        echo $form->labelEx($model,Yii::t('students','<strong style="color:#000">Upload Photo</strong>'));
+                        echo $form->labelEx($model,Yii::t('students','<strong style="color:#000">Upload Photo (500KB max)</strong>'));
                         else
                         echo $form->labelEx($model,'Photo'); 
                     ?>

@@ -94,8 +94,8 @@ class Students extends CActiveRecord
 
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('photo_data', 'file', 'types'=>'jpg, gif, png', 'allowEmpty' => true),
-			array('id, admission_no, parent_id, class_roll_no, admission_date, first_name, middle_name, last_name, batch_id, date_of_birth, gender, blood_group, birth_place, nationality_id, language, religion, student_category_id, address_line1, address_line2, city, state, pin_code, country_id, phone1, phone2, email, immediate_contact_id, is_sms_enabled, photo_file_name, photo_content_type, photo_data, status_description, is_active, is_deleted, created_at, updated_at, has_paid_fees, photo_file_size, user_id, medium_of_instruction, caste', 'safe', 'on'=>'search'),
+			array('photo_data', 'file', 'types'=>'jpg, gif, png', 'allowEmpty' => true, 'maxSize'=>716800, 'tooLarge'=>'File has to be smaller than 500KB'),
+			array('id, admission_no, parent_id, class_roll_no, admission_date, first_name, middle_name, last_name, batch_id, date_of_birth, gender, blood_group, birth_place, nationality_id, language, religion, student_category_id, address_line1, address_line2, city, state, pin_code, country_id, phone1, phone2, email, immediate_contact_id, is_sms_enabled, photo_file_name, photo_content_type, status_description, is_active, is_deleted, created_at, updated_at, has_paid_fees, photo_file_size, user_id, medium_of_instruction, caste', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -118,7 +118,7 @@ class Students extends CActiveRecord
 		if($validate!=NULL)
 		{
         
-            $this->addError($attribute,'Email allready in use');
+            $this->addError($attribute,'Email already in use');
 		}
 		}
     }
@@ -212,7 +212,6 @@ class Students extends CActiveRecord
 		$criteria->compare('is_sms_enabled',$this->is_sms_enabled);
 		$criteria->compare('photo_file_name',$this->photo_file_name,true);
 		$criteria->compare('photo_content_type',$this->photo_content_type,true);
-		$criteria->compare('photo_data',$this->photo_data,true);
 		$criteria->compare('status_description',$this->status_description,true);
 		$criteria->compare('is_active',$this->is_active);
 		$criteria->compare('is_deleted',$this->is_deleted);
@@ -245,6 +244,8 @@ class Students extends CActiveRecord
 	{
 		return ucfirst($this->first_name).' '.ucfirst($this->middle_name).' '.ucfirst($this->last_name);
 	}
+
+
 	
 	
 	

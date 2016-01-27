@@ -156,7 +156,8 @@ $this->breadcrumbs=array(
 			                                             $t = count($grades);
 
 														 if($examgroup->exam_type == 'Marks') {  
-														 echo $score->marks;  
+														 if($score->marks==0) { echo "A"; }
+														 else { echo $score->marks;  }
 														 if($score->is_failed == 1){ $result = 'FAIL';}
 														 } 
 														  else if($examgroup->exam_type == 'Grades') {

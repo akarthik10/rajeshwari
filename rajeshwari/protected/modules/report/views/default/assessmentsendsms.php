@@ -144,7 +144,12 @@ if(isset($_REQUEST['examid']))
                                     						{
                                     						    // echo $score->marks;
                                     						    $message .= $subject->name.' :'. $score->marks . "\r\n";
-                                    						    $result_r .= $subject->name . ': '.round($score->marks).'/'.round($exam->maximum_marks). ";" ;
+                                    						    if($score->marks==0){
+                                    						    	$result_r .= $subject->name . ': A;'; 
+                                    						    }
+                                    						    else{
+                                    						    	$result_r .= $subject->name . ': '.round($score->marks).'/'.round($exam->maximum_marks). ";" ;
+                                    						    }
                                     						    $total += round($score->marks);
                                     						    $total_of_max_marks+=round($exam->maximum_marks);
                                     						    // if($score->is_failed == 1){ $result = 'FAIL'; }

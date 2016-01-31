@@ -141,12 +141,14 @@ $this->breadcrumbs=array(
 							<!-- Mark and Remarks Column -->
 							<table align="center" width="100%" style="border:none;width:auto; min-width:80px;">
 								<tr>
-									<td style="border:none;<?php if($score->is_failed == 1){?>color:#F00;<?php }?>">
+									<td style="border:none;<?php if($score->is_failed == 1 || $score->marks==0){?>color:#F00;<?php }?>">
 										<?php 
 										 $grades = GradingLevels::model()->findAllByAttributes(array('batch_id'=>$batch_id));
 			                                             $t = count($grades);
 														 if($examgroup->exam_type == 'Marks') {  
-														 echo $score->marks; } 
+														 if($score->marks==0){echo "A";}
+														 else {echo $score->marks;}
+														  } 
 														  else if($examgroup->exam_type == 'Grades') {
 														  	$grade_value = 'No Grade';
 														  	$current_max = 0;
@@ -207,16 +209,7 @@ $this->breadcrumbs=array(
 										?>
 									</td>
 								</tr>
-								<tr>
-									<td style="border:none;<?php if($score->is_failed == 1){?>color:#F00;<?php }?>">
-										<?php 
-										if($score->remarks!=NULL)
-											echo $score->remarks;
-										else
-											echo '-';
-										?>
-									</td>
-								</tr>
+								
 							</table>
 							<!-- End Mark and Remarks Column -->
 						<?php

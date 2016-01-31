@@ -3,7 +3,7 @@
 	{
 		var table = document.getElementById(tableID);
 		var rowCount = table.rows.length;
-		if(rowCount < 13)// limit the user from creating fields more than your limits
+		if(rowCount < 23)// limit the user from creating fields more than your limits
 		{
 			var row = table.insertRow(rowCount);
 			var colCount = table.rows[0].cells.length;
@@ -30,7 +30,7 @@
 		}
 		else
 		{
-			 alert("Only 5 files can be uploaded at a time. Go to the student profile to add more.");
+			 alert("Only 8 files can be uploaded at a time. Go to the student profile to add more.");
 				   
 		}
 	}

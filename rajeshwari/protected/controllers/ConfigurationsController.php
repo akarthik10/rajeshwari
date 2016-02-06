@@ -247,6 +247,11 @@ class ConfigurationsController extends RController
 			/*$posts_10=Configurations::model()->findByAttributes(array('id'=>6));
 			$posts_10->config_value = $_POST['logo'];
 			$posts_10->save();*/
+
+			$posts_16=Configurations::model()->findByAttributes(array('id'=>22));
+			$posts_16->config_value = $_POST['dise_code'];
+			$posts_16->save();
+
 			if($file=CUploadedFile::getInstance($logo,'uploadedFile'))
        		 {
 				$logo = new Logo;
@@ -454,6 +459,10 @@ class ConfigurationsController extends RController
 			$posts_13=Configurations::model()->findByAttributes(array('id'=>8));
 			$posts_13->config_value = $_POST['employee_number'];
 			$posts_13->save();
+
+			$posts_16=Configurations::model()->findByAttributes(array('id'=>22));
+			$posts_16->config_value = $_POST['dise_code'];
+			$posts_16->save();
 				$this->redirect(array('create'));
 		}
 

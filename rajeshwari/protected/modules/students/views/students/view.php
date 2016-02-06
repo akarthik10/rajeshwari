@@ -149,6 +149,36 @@ $this->breadcrumbs=array(
     <td class="listbx_subhdng"><?php echo Yii::t('students','Medium of Instruction');?></td>
     <td class="subhdng_nrmal"><?php echo $model->medium_of_instruction; ?></td>
   </tr>
+  <tr>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','Aadhar Card No.');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->aadhar_card_no; ?></td>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','Scholarship Code');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->scholarship_code; ?></td>
+  </tr>
+    <tr>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','Identification Mark');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->identification_mark; ?></td>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','Vaccinated');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->vaccinated; ?></td>
+  </tr>
+      <tr>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','Place of Stay');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->place_of_stay; ?></td>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','No. of Brothers');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->no_of_brothers; ?></td>
+  </tr>
+  <tr>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','No. of Sisters');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->no_of_sisters; ?></td>
+    <td class="listbx_subhdng">&nbsp;</td>
+    <td class="subhdng_nrmal">&nbsp;</td>
+  </tr>
+        <tr>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','TC Given');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->tc_given; ?></td>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','TC Remarks');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->tc_remarks; ?></td>
+  </tr>
   <tr class="listbxtop_hdng">
     <td><?php echo Yii::t('students','Emergeny Contact');?></td>
     <td>&nbsp;</td>
@@ -194,18 +224,32 @@ $this->breadcrumbs=array(
 		foreach($previous as $prev){
 			if($prev->institution!=NULL or $prev->year!=NULL or $prev->course!=NULL or $prev->total_mark!=NULL){
 		?>
-        	<tr>
-        	<td class="listbx_subhdng"><?php echo Yii::t('students','Institution');?></td>
+    <tr>
+          <td class="listbx_subhdng"><?php echo Yii::t('students','Institution');?></td>
             <td class="subhdng_nrmal"><?php if($prev->institution!=NULL){echo $prev->institution;} else { echo '-';} ?></td> 
-        	<td class="listbx_subhdng"><?php echo Yii::t('students','Year');?></td>
+          <td class="listbx_subhdng"><?php echo Yii::t('students','Year');?></td>
             <td class="subhdng_nrmal"><?php if($prev->year!=NULL){ echo $prev->year;} else { echo '-';} ?></td> 
+      </tr>
+            <tr>
+          <td class="listbx_subhdng"><?php echo Yii::t('students','Course');?></td>
+            <td class="subhdng_nrmal"><?php if($prev->course!=NULL){echo $prev->course; } else { echo '-';}?></td> 
+          <td class="listbx_subhdng"><?php echo Yii::t('students','Total Mark');?></td>
+            <td class="subhdng_nrmal"><?php if($prev->total_mark!=NULL){echo $prev->total_mark;} else { echo '-';} ?></td> 
+      </tr>
+      
+        	<tr>
+        	<td class="listbx_subhdng"><?php echo Yii::t('prev_dise','Previous School DISE ');?></td>
+            <td class="subhdng_nrmal"><?php if($prev->prev_dise!=NULL){echo $prev->prev_dise;} else { echo '-';} ?></td> 
+        	<td class="listbx_subhdng"><?php echo Yii::t('prev_scholarship','Previous Scholarship');?></td>
+            <td class="subhdng_nrmal"><?php if($prev->prev_scholarship!=NULL){ echo $prev->prev_scholarship;} else { echo '-';} ?></td> 
 			</tr>
             <tr>
-        	<td class="listbx_subhdng"><?php echo Yii::t('students','Course');?></td>
-            <td class="subhdng_nrmal"><?php if($prev->course!=NULL){echo $prev->course; } else { echo '-';}?></td> 
-        	<td class="listbx_subhdng"><?php echo Yii::t('students','Total Mark');?></td>
-            <td class="subhdng_nrmal"><?php if($prev->total_mark!=NULL){echo $prev->total_mark;} else { echo '-';} ?></td> 
+        	<td class="listbx_subhdng"><?php echo Yii::t('prev_dol','Date of Leaving');?></td>
+            <td class="subhdng_nrmal"><?php if($prev->prev_dol!=NULL){echo $prev->prev_dol; } else { echo '-';}?></td> 
+        	<td class="listbx_subhdng"><?php echo Yii::t('prev_reason','Reason');?></td>
+            <td class="subhdng_nrmal"><?php if($prev->prev_reason!=NULL){echo $prev->prev_reason;} else { echo '-';} ?></td> 
 			</tr>
+
             <tr>
             	<td class="listbx_subhdng"><?php echo CHtml::link(Yii::t('students','Edit'), array('studentPreviousDatas/update','id'=>$model->id,'pid'=>$prev->id)); ?></td>
                 <td>&nbsp;</td>

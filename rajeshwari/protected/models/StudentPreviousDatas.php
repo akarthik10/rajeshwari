@@ -39,10 +39,10 @@ class StudentPreviousDatas extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('student_id', 'numerical', 'integerOnly'=>true),
-			array('institution, year, course, total_mark', 'length', 'max'=>255),
+			array('institution, year, course, total_mark, medium, prev_dise, prev_scholarship, prev_dol, prev_reason', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, student_id, institution, year, course, total_mark, medium', 'safe', 'on'=>'search'),
+			array('id, student_id, institution, year, course, total_mark, medium, prev_dise, prev_scholarship, prev_dol, prev_reason', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,7 +69,11 @@ class StudentPreviousDatas extends CActiveRecord
 			'year' => 'Year',
 			'course' => 'Course',
 			'total_mark' => 'Total Mark',
-			`medium` => 'Medium'
+			`medium` => 'Medium',
+			'prev_dise' => 'Previous DISE Code',
+			'prev_dol' => 'Date of Leaving',
+			'prev_scholarship' => 'Previous Scholarship Code',
+			'prev_reason' => 'Reason for Leaving'
 		);
 	}
 
@@ -91,6 +95,10 @@ class StudentPreviousDatas extends CActiveRecord
 		$criteria->compare('course',$this->course,true);
 		$criteria->compare('total_mark',$this->total_mark,true);
 		$criteria->compare('medium',$this->medium,true);
+		$criteria->compare('prev_dise',$this->prev_dise,true);
+		$criteria->compare('prev_dol',$this->prev_dol,true);
+		$criteria->compare('prev_scholarship',$this->prev_scholarship,true);
+		$criteria->compare('prev_reason',$this->prev_reason,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

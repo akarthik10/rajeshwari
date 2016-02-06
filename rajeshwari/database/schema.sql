@@ -2491,6 +2491,13 @@ CREATE TABLE `students` (
   `user_id` int(11) DEFAULT NULL,
   `caste` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `medium_of_instruction` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `aadhar_card_no` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `scholarship_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `identification_mark` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `vaccinated` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `place_of_stay` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `no_of_brothers` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `no_of_sisters` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_students_on_admission_no` (`admission_no`(10)),
   KEY `index_students_on_first_name_and_middle_name_and_last_name` (`first_name`(10),`middle_name`(10),`last_name`(10))
@@ -2653,6 +2660,10 @@ CREATE TABLE `student_previous_datas` (
   `course` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `total_mark` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `medium` varchar(255) DEFAULT NULL,
+  `prev_dise` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prev_scholarship` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prev_dol` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prev_reason` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

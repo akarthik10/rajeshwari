@@ -70,9 +70,9 @@ class StudentPreviousDatasController extends RController
 		{
 			//print_r($_POST); exit;
 			$model->attributes=$_POST['StudentPreviousDatas'];
-			if($model->institution!=NULL or $model->year!=NULL or $model->course!=NULL or $model->total_mark!=NULL){
+			
 				$model->save();
-			}
+			
 			//if($model->save())
 			$this->redirect(array('studentDocument/create','id'=>$_REQUEST['id']));
 		}
@@ -98,8 +98,9 @@ class StudentPreviousDatasController extends RController
 		if(isset($_POST['StudentPreviousDatas']))
 		{
 			$model->attributes=$_POST['StudentPreviousDatas'];
-			if($model->save())
+			if($model->save()){
 				$this->redirect(array('students/view','id'=>$id));
+			}
 		}
 
 		$this->render('update',array(

@@ -276,12 +276,12 @@ else
                         <?php echo $form->error($model,'student_category_id'); ?>
                     </td>
                 </tr>
-                                <tr>
+                <tr>
                     <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','caste')); ?></td>
                     <td>&nbsp;</td>
                     <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','medium_of_instruction')); ?></td>
                     <td>&nbsp;</td>
-                    <td valign="bottom">&nbsp;</td>
+                    <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','aadhar_card_no')); ?></td>
                 </tr>
                 <tr>
                     <td valign="top">
@@ -295,9 +295,86 @@ else
                     </td>
                     <td>&nbsp;</td>
                     <td valign="top">
-                        &nbsp;
+                         <?php echo $form->textField($model,'aadhar_card_no',array('size'=>10,'maxlength'=>255)); ?>
+                        <?php echo $form->error($model,'aadhar_card_no'); ?>
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="5">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','scholarship_code')); ?></td>
+                    <td>&nbsp;</td>
+                    <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','identification_mark')); ?></td>
+                    <td>&nbsp;</td>
+                    <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','vaccinated')); ?></td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <?php echo $form->textField($model,'scholarship_code',array('size'=>15,'maxlength'=>255)); ?>
+                        <?php echo $form->error($model,'scholarship_code'); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td valign="top">
+                        <?php echo $form->textField($model,'identification_mark',array('size'=>10,'maxlength'=>255)); ?>
+                        <?php echo $form->error($model,'identification_mark'); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td valign="top">
+                         <?php echo $form->textField($model,'vaccinated',array('size'=>10,'maxlength'=>255)); ?>
+                        <?php echo $form->error($model,'vaccinated'); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','place_of_stay')); ?></td>
+                    <td>&nbsp;</td>
+                    <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','no_of_brothers')); ?></td>
+                    <td>&nbsp;</td>
+                    <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','no_of_sisters')); ?></td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <?php echo $form->textField($model,'place_of_stay',array('size'=>15,'maxlength'=>255)); ?>
+                        <?php echo $form->error($model,'place_of_stay'); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td valign="top">
+                        <?php echo $form->textField($model,'no_of_brothers',array('size'=>10,'maxlength'=>255)); ?>
+                        <?php echo $form->error($model,'no_of_brothers'); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td valign="top">
+                         <?php echo $form->textField($model,'no_of_sisters',array('size'=>10,'maxlength'=>255)); ?>
+                        <?php echo $form->error($model,'no_of_sisters'); ?>
+                    </td>
+                </tr>
+
+
+                                <tr>
+                    <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','tc_given')); ?></td>
+                    <td>&nbsp;</td>
+                    <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','tc_remarks')); ?></td>
+                    <td>&nbsp;</td>
+                    <td valign="bottom"></td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <?php echo $form->dropDownList($model,'tc_given',array('Yes' => 'Yes', 'No' => 'No'),array('empty' => 'Select')); ?>
+                        <?php echo $form->error($model,'tc_given'); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td valign="top">
+                        <?php echo $form->textField($model,'tc_remarks',array('size'=>10,'maxlength'=>255)); ?>
+                        <?php echo $form->error($model,'tc_remarks'); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td valign="top">
+                    </td>
+                </tr>
+
             </table>
         </div>
     </div>

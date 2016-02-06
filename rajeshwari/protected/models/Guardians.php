@@ -56,7 +56,7 @@ class Guardians extends CActiveRecord
 		return array(
 			array('ward_id, country_id,office_phone1, office_phone2, income,uid', 'numerical', 'integerOnly'=>true),
 			array('mobile_phone','length','max'=>10,'min'=>10),
-			array('first_name, last_name, relation, email, office_phone1, office_phone2, mobile_phone, office_address_line1, office_address_line2, city, state, occupation, income, education, mother_name', 'length', 'max'=>255),
+			array('first_name, last_name, relation, email, office_phone1, office_phone2, mobile_phone, office_address_line1, office_address_line2, city, state, occupation, income, education, mother_name, no_of_dependents', 'length', 'max'=>255),
 			//array('first_name, last_name, email', 'required'),
 			array('first_name', 'required'),
 			array('email','check'),
@@ -64,7 +64,7 @@ class Guardians extends CActiveRecord
 			array('dob, created_at, updated_at', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, ward_id, first_name, last_name, relation, email, office_phone1, office_phone2, mobile_phone, office_address_line1, office_address_line2, city, state, country_id, dob, occupation, income, education, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, ward_id, first_name, last_name, relation, email, office_phone1, office_phone2, mobile_phone, office_address_line1, office_address_line2, city, state, country_id, dob, occupation, income, education, created_at, updated_at, no_of_dependents', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -120,6 +120,7 @@ class Guardians extends CActiveRecord
 			'mother_name' => 'Mother Name',
 			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
+			'no_of_dependents' => 'No of Dependents'
 		);
 	}
 
@@ -155,6 +156,7 @@ class Guardians extends CActiveRecord
 		$criteria->compare('mother_name',$this->education,true);
 		$criteria->compare('created_at',$this->created_at,true);
 		$criteria->compare('updated_at',$this->updated_at,true);
+		$criteria->compare('no_of_dependents',$this->no_of_dependents,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

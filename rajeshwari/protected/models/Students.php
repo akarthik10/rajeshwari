@@ -69,6 +69,7 @@ class Students extends CActiveRecord
 
 	/**
 	 * @return array validation rules for model attributes.
+	 * 
 	 */
 	public function rules()
 	{
@@ -80,7 +81,7 @@ class Students extends CActiveRecord
 			array('first_name, admission_no,student_category_id', 'required',),
 			array('admission_no','unique'),
 			array('email','check'),
-			array('admission_no, class_roll_no, first_name, middle_name, last_name, gender, blood_group, birth_place, language, religion, address_line1, address_line2, city, state, email, photo_file_name, photo_content_type, status_description, medium_of_instruction, caste', 'length', 'max'=>255),
+			array('admission_no, class_roll_no, first_name, middle_name, last_name, gender, blood_group, birth_place, language, religion, address_line1, address_line2, city, state, email, photo_file_name, photo_content_type, status_description, medium_of_instruction, caste, aadhar_card_no, scholarship_code,identification_mark, vaccinated, place_of_stay, no_of_brothers, no_of_sisters, tc_given, tc_remarks ', 'length', 'max'=>255),
 			array('admission_date, date_of_birth, created_at, updated_at', 'safe'),			
 			array('email','email'),
 			/*array(
@@ -95,7 +96,7 @@ class Students extends CActiveRecord
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('photo_data', 'file', 'types'=>'jpg, gif, png', 'allowEmpty' => true, 'maxSize'=>716800, 'tooLarge'=>'File has to be smaller than 500KB'),
-			array('id, admission_no, parent_id, class_roll_no, admission_date, first_name, middle_name, last_name, batch_id, date_of_birth, gender, blood_group, birth_place, nationality_id, language, religion, student_category_id, address_line1, address_line2, city, state, pin_code, country_id, phone1, phone2, email, immediate_contact_id, is_sms_enabled, photo_file_name, photo_content_type, status_description, is_active, is_deleted, created_at, updated_at, has_paid_fees, photo_file_size, user_id, medium_of_instruction, caste', 'safe', 'on'=>'search'),
+			array('id, admission_no, parent_id, class_roll_no, admission_date, first_name, middle_name, last_name, batch_id, date_of_birth, gender, blood_group, birth_place, nationality_id, language, religion, student_category_id, address_line1, address_line2, city, state, pin_code, country_id, phone1, phone2, email, immediate_contact_id, is_sms_enabled, photo_file_name, photo_content_type, status_description, is_active, is_deleted, created_at, updated_at, has_paid_fees, photo_file_size, user_id, medium_of_instruction, caste, aadhar_card_no, scholarship_code,identification_mark, vaccinated, place_of_stay, no_of_brothers, no_of_sisters, tc_given, tc_remarks', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -169,6 +170,15 @@ class Students extends CActiveRecord
 			'user_id' => 'User',
 			'medium_of_instruction' => 'Medium of Instruction',
 			'caste' => 'Caste',
+			'aadhar_card_no' => 'Aadhar Card No.',
+			 'scholarship_code' => 'Scholarship Code',
+			 'identification_mark' => 'Identification Mark',
+			 'vaccinated' => 'Vaccinated', 
+			 'place_of_stay' => 'Place of stay',
+			 ' no_of_brothers' => 'No. of brothers', 
+			 'no_of_sisters' => 'No. of sisters',
+			 'tc_given' => 'TC Given',
+			 'tc_remarks' => 'TC Remarks'
 		);
 	}
 
@@ -222,6 +232,13 @@ class Students extends CActiveRecord
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('medium_of_instruction',$this->medium_of_instruction);
 		$criteria->compare('caste',$this->caste);
+		$criteria->compare('aadhar_card_no',$this->aadhar_card_no);
+		$criteria->compare('scholarship_code',$this->scholarship_code);
+		$criteria->compare('identification_mark',$this->identification_mark);
+		$criteria->compare('vaccinated',$this->vaccinated);
+		$criteria->compare('place_of_stay',$this->place_of_stay);
+		$criteria->compare('no_of_brothers',$this->no_of_brothers);
+		$criteria->compare('no_of_sisters',$this->no_of_sisters);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

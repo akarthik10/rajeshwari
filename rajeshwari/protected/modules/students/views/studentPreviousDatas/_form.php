@@ -67,6 +67,52 @@
 		<?php echo $form->error($model,'total_mark'); ?></td>
   
   <td><?php echo $form->textField($model,'medium',array('size'=>25,'maxlength'=>255)); ?>
+  		<?php echo $form->error($model,'medium'); ?> </td>
+    
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+   
+  </tr>
+    <tr>
+  	 <td><?php echo $form->labelEx($model,Yii::t('students','prev_dise')); ?></td>
+     <td>&nbsp;</td>
+    <td><?php echo $form->labelEx($model,Yii::t('students','prev_scholarship')); ?></td>
+    <td><?php echo $form->labelEx($model,Yii::t('students','prev_dol')); ?></td>
+   
+  </tr>
+  <tr>
+  	<td><?php echo $form->textField($model,'prev_dise',array('size'=>25,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'prev_dise'); ?></td>
+         <td>&nbsp;</td>
+    <td><?php echo $form->textField($model,'prev_scholarship',array('size'=>25,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'prev_scholarship'); ?></td>
+  
+  <td><?php echo $form->textField($model,'prev_dol',array('size'=>25,'maxlength'=>255)); ?>
+  		<?php echo $form->error($model,'prev_dol'); ?> </td>
+    
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+   
+  </tr>
+      <tr>
+  	 <td><?php echo $form->labelEx($model,Yii::t('students','prev_reason')); ?></td>
+     <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+   
+  </tr>
+  <tr>
+  	<td><?php echo $form->textField($model,'prev_reason',array('size'=>25,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'prev_reason'); ?></td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
     
   </tr>
  

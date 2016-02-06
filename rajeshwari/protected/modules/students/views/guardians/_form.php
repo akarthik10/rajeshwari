@@ -129,7 +129,7 @@ if(Yii::app()->user->hasFlash('errorMessage')): ?>
     <td><?php echo $form->labelEx($model,Yii::t('students','mother_name')); ?></td>
     
     <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td><?php echo $form->labelEx($model,Yii::t('students','no_of_dependents')); ?></td>
   </tr>
   <tr>
     <td><?php echo $form->textField($model,'income',array('size'=>15,'maxlength'=>255)); ?>
@@ -139,7 +139,8 @@ if(Yii::app()->user->hasFlash('errorMessage')): ?>
     <?php echo $form->error($model,'mother_name'); ?></td>
     
     <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td><?php echo $form->textField($model,'no_of_dependents',array('size'=>15,'maxlength'=>255)); ?>
+    <?php echo $form->error($model,'no_of_dependents'); ?></td>
   </tr>
 
 

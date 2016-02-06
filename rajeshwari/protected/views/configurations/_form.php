@@ -173,8 +173,10 @@
      <td>&nbsp;</td>
    </tr>
    <tr>
-    <td>&nbsp;</td>
-    <td><div class="row"></div></td>
+    <td><?php echo Yii::t('settings','DISE Code');?></td>
+    <td><?php 
+		$val_3 = $model->findByPk(22);
+		echo CHtml::textField('dise_code',$val_3->config_value,array()); ?></td>
     <td><?php echo Yii::t('settings','Network State');?></td>
     <td><?php 
 		$val_9 = $model->findByPk(12);

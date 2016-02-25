@@ -31,8 +31,27 @@
 		else
 		{
 			 alert("Only 8 files can be uploaded at a time. Go to the student profile to add more.");
-				   
-		}
+		}				   
+/* Quickfix*/	
+
+$("input[name=StudentDocument\\[file\\]\\[\\]][type=file]").unbind('change');
+$("input[name=StudentDocument\\[file\\]\\[\\]][type=file]").change(function(){
+	tr = $(this).closest('tr');
+	text = tr.find("input[type=text]");
+	 filename = $(this).val().split('\\').pop();
+	 text.attr("value", filename);
+});
+
+$("input[name=StudentDocument\\[file\\]\\[\\]][type=file]").each(function(){
+	tr = $(this).closest('tr');
+	text = tr.find("input[type=text]");
+	 if($(this).val()==""){
+           	 text.attr("value", "");
+         }
+
+});
+
+/* Quickfix end*/
 	}
 	
 	function addDiv(divID)
@@ -42,6 +61,27 @@
 		divTag.innerHTML = document.getElementById(divID).innerHTML;
 		document.getElementById("innerDiv").appendChild(divTag);
 	}
+
+		$(document).ready(function(){  
+		/* Quickfix*/		
+		$("input[name=StudentDocument\\[file\\]\\[\\]][type=file]").unbind('change');
+		$("input[name=StudentDocument\\[file\\]\\[\\]][type=file]").change(function(){
+			tr = $(this).closest('tr');
+			text = tr.find("input[type=text]");
+			 filename = $(this).val().split('\\').pop();
+			 text.attr("value", filename);
+		});
+		
+		$("input[name=StudentDocument\\[file\\]\\[\\]][type=file]").each(function(){
+			tr = $(this).closest('tr');
+			text = tr.find("input[type=text]");
+			 if($(this).val()==""){
+		           	 text.attr("value", "");
+		         }
+		
+		});
+		
+		});
 </script>
 
 

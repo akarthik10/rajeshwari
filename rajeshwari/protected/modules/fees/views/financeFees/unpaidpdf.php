@@ -125,6 +125,7 @@ $this->breadcrumbs=array(
     <!-- Particulars Table -->
 
     <div style="width:700px;">
+         <!--
     	<table style="font-size:14px;" class="unpaid_table"  width="100%" cellspacing="0" >
         	<tr style="background:#E1EAEF; text-align:center; line-height:10px;">
                 <th style="width:30px; padding-top:10px;"><strong><?php echo Yii::t('fees','Sl no.');?></strong></th>
@@ -161,7 +162,8 @@ $this->breadcrumbs=array(
             <?php  
 			$i++;} 
 			?>
-        </table>    
+        </table> 
+        -->   
     </div>
     <!-- Particulars Table End -->
 <!-- Students List Table -->

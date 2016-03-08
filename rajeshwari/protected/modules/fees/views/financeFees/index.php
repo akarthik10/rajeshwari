@@ -130,6 +130,7 @@ echo '<br/><br/>';
 	</div></div>
 	
 	   <div class="tableinnerlist"> 
+		<!--
 		<table width="80%" cellspacing="0" cellpadding="0">
 			<tr>
 			 <th><strong><?php echo Yii::t('fees','Sl no.');?></strong></th>
@@ -170,6 +171,7 @@ echo '<br/><br/>';
 				<td style="color:#333333; font-size:16px;"><?php echo $amount;?> </td>
 			</tr><?php */?>
 			</table> <br />
+		-->
 		   <table width="90%" cellspacing="0" cellpadding="0">
 			<tr>
                  <th><strong><?php echo Yii::t('fees','Sl no.');?> </strong></th>

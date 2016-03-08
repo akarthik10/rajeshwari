@@ -123,6 +123,7 @@ echo '<br/><br/>';
 	
 	   <div class="tableinnerlist">
 	   	<div class="ea_pdf" style="top:6px; right:1px;"><?php echo CHtml::link('<img src="images/pdf-but.png" border="0" />', array('/fees/FinanceFees/unpaidpdf','batch'=>$_REQUEST['batch'],'collection'=>$_REQUEST['collection']),array('target'=>"_blank")); ?></div> 
+	   	<!--
 		<table width="80%" cellspacing="0" cellpadding="0">
 			<tr>
 			 <th><strong><?php echo Yii::t('fees','Sl no.');?></strong></th>
@@ -162,7 +163,7 @@ echo '<br/><br/>';
 				<td style="color:#333333; font-size:16px; text-align:right"><strong><?php echo Yii::t('fees','Total');?></strong></td>
 				<td style="color:#333333; font-size:16px;"><?php echo $amount;?> </td>
 			</tr><?php */?>
-			</table> <br />
+			</table> <br /> -->
 		   <table width="90%" cellspacing="0" cellpadding="0">
 			<tr>
                  <th><strong><?php echo Yii::t('fees','Sl no.');?> </strong></th>

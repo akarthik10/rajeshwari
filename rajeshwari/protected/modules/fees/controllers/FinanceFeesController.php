@@ -168,7 +168,8 @@ class FinanceFeesController extends RController
         $receipt_type = "student_copy";
         $sid1 = $_REQUEST['id'];
         $sid2 = $_REQUEST['id'];
-        $html2pdf->WriteHTML($this->renderPartial('printreceipt', array('batch'=>$_REQUEST['batch'],'collection'=>$_REQUEST['course'],'id'=>$sid1,'receipt_no'=>$receipt_no, 'receipt_type'=>$receipt_type), true));
+        
+      $html2pdf->WriteHTML($this->renderPartial('printreceipt', array('batch'=>$_REQUEST['batch'],'collection'=>$_REQUEST['course'],'id'=>$sid1,'receipt_no'=>$receipt_no, 'receipt_type'=>$receipt_type), true));
 
         $html2pdf->WriteHTML("<br/><br/><br/><br/><br/>");
         $receipt_type = "office_copy";
@@ -208,11 +209,12 @@ class FinanceFeesController extends RController
 				  
         $html2pdf = Yii::app()->ePdf->HTML2PDF();
         $receipt_type = "student_copy";
-        $html2pdf->WriteHTML($this->renderPartial('partialreceipt', array('transaction_id'=>$_REQUEST['id'],'batch_id'=>$batch_id,'collection_id'=>$collection_id,'student_id'=>$student_id,'receipt_no'=>$receipt_no, 'receipt_type'=>$receipt_type), true));
+        $trans_id = $_REQUEST['id'];
+        $html2pdf->WriteHTML($this->renderPartial('partialreceipt', array('transaction_id'=>$trans_id,'batch_id'=>$batch_id,'collection_id'=>$collection_id,'student_id'=>$student_id,'receipt_no'=>$receipt_no, 'receipt_type'=>$receipt_type), true));
 
         $html2pdf->WriteHTML("<br/><br/><br/><br/><br/>");
         $receipt_type = "office_copy";
-        $html2pdf->WriteHTML($this->renderPartial('partialreceipt', array('transaction_id'=>$_REQUEST['id'],'batch_id'=>$batch_id,'collection_id'=>$collection_id,'student_id'=>$student_id,'receipt_no'=>$receipt_no, 'receipt_type'=>$receipt_type), true));
+        $html2pdf->WriteHTML($this->renderPartial('partialreceipt', array('transaction_id'=>$trans_id,'batch_id'=>$batch_id,'collection_id'=>$collection_id,'student_id'=>$student_id,'receipt_no'=>$receipt_no, 'receipt_type'=>$receipt_type), true));
         $html2pdf->Output($student);
 		//$this->render('printreceipt');
 	}

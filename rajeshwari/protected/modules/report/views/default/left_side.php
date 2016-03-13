@@ -24,7 +24,10 @@
 						array('label'=>Yii::t('report','Batch Assessment Report').'<span>'.Yii::t('report','Batch wise assessment report').'</span>', 'url'=>array('/report/default/assessment'),'active'=>(Yii::app()->controller->action->id=='assessment' ? true : false),'linkOptions'=>array('class'=>'ar_ico')),
 						array('label'=>Yii::t('report','SMS Exam Report').'<span>'.Yii::t('report','SMS Exam Report').'</span>', 'url'=>array('/report/default/assessmentsms'),'active'=>(Yii::app()->controller->action->id=='assessmentsms' ? true : false),'linkOptions'=>array('class'=>'ar_ico')),
 						array('label'=>Yii::t('report','Student Assessment Report').'<span>'.Yii::t('report','Student assessment').'</span>', 'url'=>array('/report/default/studentexam'),'active'=>(Yii::app()->controller->action->id=='studentexam' ? true : false),'linkOptions'=>array('class'=>'sa_ico')),
+						array('label'=>Yii::t('report','Subject Assessment Report').'<span>'.Yii::t('report','Subject wise assessment report').'</span>', 'url'=>array('/report/default/subject'),'active'=>(Yii::app()->controller->action->id=='subject' ? true : false),'linkOptions'=>array('class'=>'ar_ico')),
 						array('label'=>''.'<h1>'.Yii::t('report','Attendance Report').'</h1>'),
+
+
 						
 						
 						array('label'=>Yii::t('report','Employee Attendance').'<span>'.Yii::t('report','Employee attendance report').'</span>', 'url'=>array('/report/default/employeeattendance'),'active'=>(Yii::app()->controller->action->id=='employeeattendance' ? true : false),'linkOptions'=>array('class'=>'sm_ico')),

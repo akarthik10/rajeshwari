@@ -268,6 +268,40 @@ class DefaultController extends RController
 						 array('value'=>$value),CHtml::encode($title),true);
 		  }
 	}
+
+		public function actionExam()
+	{
+
+
+		if(isset($_REQUEST['exam_id']))
+		{
+			
+			$data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$_REQUEST['exam_id']));
+			$subjects = array();
+			$subject_l = array();
+			foreach ($data as $datai) {
+				$subjects[] = $datai->subject_id;
+				// echo $datai->id;
+				$sub = Subjects::model()->findAll('id=:x',array(':x'=>$datai->subject_id));
+				$subject_l = array_merge($sub, $subject_l);
+				
+			}
+
+			// print_r( $subject_l);
+			
+		
+
+		// echo CHtml::tag('option', array('value' => 0), CHtml::encode('Select'), true);
+		$data=CHtml::listData($subject_l,'id','name');
+		  // print_r($data);
+
+		  // echo CHtml::checkBox('select_all',false, array('onclick' => "js:if($(this).is(':checked')) {$('.example').attr('checked','checked');}else{$('.example').removeAttr('checked');}"));
+			echo CHtml::activeCheckBoxList(Subjects::model(), 'id',$data, array( 'template' => '<span class="subjects_ckb">{input}{label}</span><br />', 'class'=>'subjects'));
+		  
+		}
+		
+	}
+
 	public function actionBatchname()
 	{			
 		$data=Batches::model()->findAll('course_id=:id AND is_active=:x AND is_deleted=:y',array(':id'=>(int) $_POST['cid'],':x'=>1,':y'=>0));
@@ -457,6 +491,52 @@ class DefaultController extends RController
         $html2pdf = Yii::app()->ePdf->HTML2PDF();
         $html2pdf->WriteHTML($this->renderPartial('studentindividualpdf', array(), true));
         $html2pdf->Output($pdf_name);
+	}
+
+		public function actionSubject()
+	{
+		$model_1=new ExamGroups;
+		$criteria = new CDbCriteria;
+		if(isset($_POST['search']))
+
+		{
+			$_POST['ExamGroups']['id'] = $_POST['exam_id'];
+			if(isset($_POST['ExamGroups']['id']) &&  $_POST['ExamGroups']['id']!=NULL)
+			{
+					$criteria->condition='exam_group_id LIKE :match';
+					$criteria->params = array(':match' => $_POST['ExamGroups']['id'].'%');
+			}
+			
+				$criteria->order = 'id ASC';
+		
+				$total = Exams::model()->count($criteria);
+				$pages = new CPagination($total);
+       			$pages->setPageSize(Yii::app()->params['listPerPage']);
+       		 	$pages->applyLimit($criteria);  // the trick is here!
+				$posts = Exams::model()->findAll($criteria);
+				$this->render('subject',array('model_1'=>$model_1,
+					'list'=>$posts, 'batch_id'=>$_POST['batch'],'exam'=>$_POST['exam_id'],'subject'=>$_POST['Subjects']['id'],
+					'group_id'=>$_POST['ExamGroups']['id'])) ;
+		
+		}
+		else
+		{
+			$this->render('subject',array('model_1'=>$model_1));
+		}
+	}
+
+
+		 public function actionSubjectpdf()
+    {
+        $pdf_name = Batches::model()->findByAttributes(array('id'=>$_REQUEST['id']));
+		$pdf_name = $pdf_name->name.' Subject Assessment Report.pdf';
+        # HTML2PDF has very similar syntax
+        $html2pdf = Yii::app()->ePdf->HTML2PDF();
+
+        $html2pdf->WriteHTML($this->renderPartial('subjectpdf', array('model'=>$this->loadModel($_REQUEST['examid'])), true));
+        $html2pdf->Output($pdf_name);
+ 
+        
 	}
 
 }

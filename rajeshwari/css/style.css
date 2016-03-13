@@ -6572,3 +6572,8 @@ a.formbut_yellow {
     cursor: pointer;
 }								 
 									 /************sms module styles ends**************/
+
+.subjects_ckb input {
+    float: left;
+    margin-right: 10px;
+}

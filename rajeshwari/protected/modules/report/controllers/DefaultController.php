@@ -296,7 +296,7 @@ class DefaultController extends RController
 		  // print_r($data);
 
 		  // echo CHtml::checkBox('select_all',false, array('onclick' => "js:if($(this).is(':checked')) {$('.example').attr('checked','checked');}else{$('.example').removeAttr('checked');}"));
-			echo CHtml::activeCheckBoxList(Subjects::model(), 'id',$data, array( 'template' => '<span class="subjects_ckb">{input}{label}</span><br />', 'class'=>'subjects'));
+			echo CHtml::activeCheckBoxList(Subjects::model(), 'id',$data, array( 'template' => '<span class="subjects_ckbs" style="display: inline-flex; margin-right: 20px">{input}{label}</span><br />', 'class'=>'subjects'));
 		  
 		}
 		

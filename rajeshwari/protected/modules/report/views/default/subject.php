@@ -130,10 +130,10 @@ $this->breadcrumbs=array(
 							
 						}
 						$data=CHtml::listData($subject_l,'id','name');
-						echo '<div id="subject">';
+						echo '<div id="subject" style="display:inline-flex; width: 600px; overflow-x: auto;">';
 						$model = Subjects::model();
 						$model->id = $subject;
-					echo CHtml::activeCheckBoxList($model, 'id',$data, array( 'template' => '<span class="subjects_ckb">{input}{label}</span><br />', 'class'=>'subjects'));
+					echo CHtml::activeCheckBoxList($model, 'id',$data, array( 'template' => '<span class="subjects_ckbs" style="display: inline-flex; margin-right: 20px;">{input}{label}</span><br />', 'class'=>'subjects'));
 					echo '</div>';
 
 					
@@ -142,7 +142,7 @@ $this->breadcrumbs=array(
 				{
 					// echo CHtml::activeDropDownList($model_1,'id',array(),array('prompt'=>'Select','id'=>'subject','style'=>'width:270px;'));
 					// echo "Select Examination first";
-					echo '<div id="subject">Select an Examination first</div>';
+					echo '<div id="subject" style="display:inline-flex; width: 600px; overflow-x: auto;">Select an Examination first</div>';
 
 
 				}?></td>

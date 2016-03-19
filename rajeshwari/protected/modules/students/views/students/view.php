@@ -179,6 +179,15 @@ $this->breadcrumbs=array(
     <td class="listbx_subhdng"><?php echo Yii::t('students','TC Remarks');?></td>
     <td class="subhdng_nrmal"><?php echo $model->tc_remarks; ?></td>
   </tr>
+
+    </tr>
+        <tr>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','Child Code');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->child_code; ?></td>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','Bank Account No.');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->bank_account_no; ?></td>
+  </tr>
+
   <tr class="listbxtop_hdng">
     <td><?php echo Yii::t('students','Emergeny Contact');?></td>
     <td>&nbsp;</td>

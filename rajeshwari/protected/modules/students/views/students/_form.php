@@ -277,6 +277,9 @@ else
                     </td>
                 </tr>
                 <tr>
+                    <td colspan="5">&nbsp;</td>
+                </tr>
+                <tr>
                     <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','caste')); ?></td>
                     <td>&nbsp;</td>
                     <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','medium_of_instruction')); ?></td>
@@ -351,6 +354,9 @@ else
                         <?php echo $form->error($model,'no_of_sisters'); ?>
                     </td>
                 </tr>
+                  <tr>
+                    <td colspan="5">&nbsp;</td>
+                </tr>
 
 
                                 <tr>
@@ -358,7 +364,7 @@ else
                     <td>&nbsp;</td>
                     <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','tc_remarks')); ?></td>
                     <td>&nbsp;</td>
-                    <td valign="bottom"></td>
+                    <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','child_code')); ?></td>
                 </tr>
                 <tr>
                     <td valign="top">
@@ -369,6 +375,32 @@ else
                     <td valign="top">
                         <?php echo $form->textField($model,'tc_remarks',array('size'=>10,'maxlength'=>255)); ?>
                         <?php echo $form->error($model,'tc_remarks'); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td valign="top">
+                     <?php echo $form->textField($model,'child_code',array('size'=>10,'maxlength'=>255)); ?>
+                     <?php echo $form->error($model,'child_code'); ?>
+                    </td>
+                </tr>
+                 <tr>
+                    <td colspan="5">&nbsp;</td>
+                </tr>
+
+
+                                <tr>
+                    <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','bank_account_no')); ?></td>
+                    <td>&nbsp;</td>
+                    <td valign="bottom"></td>
+                    <td>&nbsp;</td>
+                    <td valign="bottom"></td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                     <?php echo $form->textField($model,'bank_account_no',array('size'=>10,'maxlength'=>255)); ?>
+                     <?php echo $form->error($model,'bank_account_no'); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td valign="top">
                     </td>
                     <td>&nbsp;</td>
                     <td valign="top">

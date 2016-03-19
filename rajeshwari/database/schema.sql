@@ -1692,6 +1692,7 @@ CREATE TABLE `guardians` (
   `mother_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
+  `no_of_dependents` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -2498,6 +2499,10 @@ CREATE TABLE `students` (
   `place_of_stay` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `no_of_brothers` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `no_of_sisters` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tc_given` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tc_remarks` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `child_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bank_account_no` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_students_on_admission_no` (`admission_no`(10)),
   KEY `index_students_on_first_name_and_middle_name_and_last_name` (`first_name`(10),`middle_name`(10),`last_name`(10))

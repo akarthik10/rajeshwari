@@ -1700,6 +1700,7 @@ INSERT INTO `configurations` (`id`, `config_key`, `config_value`) VALUES
 (19, 'date_format', NULL),
 (20, 'time_format', NULL),
 (21, 'welcome_message', '0');
+(22, 'dise_code', '123');
 --
 -- Dumping data for table `countries`
 --

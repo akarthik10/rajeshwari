@@ -1,3 +1,2 @@
-assets/*
 protected/config/environment.php
 protected/runtime/application.log

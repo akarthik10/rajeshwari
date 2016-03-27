@@ -25,6 +25,7 @@
 						array('label'=>Yii::t('report','SMS Exam Report').'<span>'.Yii::t('report','SMS Exam Report').'</span>', 'url'=>array('/report/default/assessmentsms'),'active'=>(Yii::app()->controller->action->id=='assessmentsms' ? true : false),'linkOptions'=>array('class'=>'ar_ico')),
 						array('label'=>Yii::t('report','Student Assessment Report').'<span>'.Yii::t('report','Student assessment').'</span>', 'url'=>array('/report/default/studentexam'),'active'=>(Yii::app()->controller->action->id=='studentexam' ? true : false),'linkOptions'=>array('class'=>'sa_ico')),
 						array('label'=>Yii::t('report','Subject Assessment Report').'<span>'.Yii::t('report','Subject wise assessment report').'</span>', 'url'=>array('/report/default/subject'),'active'=>(Yii::app()->controller->action->id=='subject' ? true : false),'linkOptions'=>array('class'=>'ar_ico')),
+						array('label'=>Yii::t('report','Subject Comparison Report').'<span>'.Yii::t('report','Subject wise comparison report').'</span>', 'url'=>array('/report/default/compare'),'active'=>(Yii::app()->controller->action->id=='compare' ? true : false),'linkOptions'=>array('class'=>'ar_ico')),
 						array('label'=>''.'<h1>'.Yii::t('report','Attendance Report').'</h1>'),
 
 

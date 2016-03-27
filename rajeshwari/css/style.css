@@ -6577,3 +6577,20 @@ a.formbut_yellow {
     float: left;
     margin-right: 10px;
 }
+
+.comparetable {
+	width: 100%;
+}
+.comparetable tr {
+	padding: 20px;
+}
+.comparetable tr td {
+	padding: 10px;
+}
+
+.comparebg {
+	background: #fff;
+	height: 100%;
+	position: absolute;
+	width: 100%;
+}

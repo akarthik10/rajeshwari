@@ -302,6 +302,72 @@ class DefaultController extends RController
 		
 	}
 
+			public function actionExam1()
+	{
+
+
+		if(isset($_REQUEST['exam_id']))
+		{
+			
+			$data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$_REQUEST['exam_id']));
+			$subjects = array();
+			$subject_l = array();
+			foreach ($data as $datai) {
+				$subjects[] = $datai->subject_id;
+				// echo $datai->id;
+				$sub = Subjects::model()->findAll('id=:x',array(':x'=>$datai->subject_id));
+				$subject_l = array_merge($sub, $subject_l);
+				
+			}
+
+			// print_r( $subject_l);
+			
+		
+
+		// echo CHtml::tag('option', array('value' => 0), CHtml::encode('Select'), true);
+		$data=CHtml::listData($subject_l,'id','name');
+		  // print_r($data);
+
+		  // echo CHtml::checkBox('select_all',false, array('onclick' => "js:if($(this).is(':checked')) {$('.example').attr('checked','checked');}else{$('.example').removeAttr('checked');}"));
+			echo CHtml::activeCheckBoxList(Subjects::model(), 'id',$data, array( 'id'=>'Subjects1[id]', 'name'=>'Subjects1[id]', 'class'=>'subjects'));
+		  
+		}
+		
+	}
+
+			public function actionExam2()
+	{
+
+
+		if(isset($_REQUEST['exam_id']))
+		{
+			
+			$data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$_REQUEST['exam_id']));
+			$subjects = array();
+			$subject_l = array();
+			foreach ($data as $datai) {
+				$subjects[] = $datai->subject_id;
+				// echo $datai->id;
+				$sub = Subjects::model()->findAll('id=:x',array(':x'=>$datai->subject_id));
+				$subject_l = array_merge($sub, $subject_l);
+				
+			}
+
+			// print_r( $subject_l);
+			
+		
+
+		// echo CHtml::tag('option', array('value' => 0), CHtml::encode('Select'), true);
+		$data=CHtml::listData($subject_l,'id','name');
+		  // print_r($data);
+
+		  // echo CHtml::checkBox('select_all',false, array('onclick' => "js:if($(this).is(':checked')) {$('.example').attr('checked','checked');}else{$('.example').removeAttr('checked');}"));
+			echo CHtml::activeCheckBoxList(Subjects::model(), 'id',$data, array( 'id'=>'Subjects2[id]', 'name'=>'Subjects2[id]', 'class'=>'subjects'));
+		  
+		}
+		
+	}
+
 	public function actionBatchname()
 	{			
 		$data=Batches::model()->findAll('course_id=:id AND is_active=:x AND is_deleted=:y',array(':id'=>(int) $_POST['cid'],':x'=>1,':y'=>0));
@@ -537,6 +603,17 @@ class DefaultController extends RController
         $html2pdf->Output($pdf_name);
  
         
+	}
+
+
+		public function actionCompare()
+	{
+		$this->render('compare',array('model_1'=>$model_1));
+	}
+
+			public function actionCompare_Launch()
+	{
+		$this->render('compare_launch', array('request'=>$_REQUEST));
 	}
 
 }

@@ -35,7 +35,8 @@ define('ENV', 'production');
 define('BASEURL', 'http://localhost/rajeshwari/rajeshwari');
 
 //Database connections
-define('DB_CONNECTION','mysql:host=localhost;port=3306;dbname=school_db');
+define('DB_CONNECTION','mysql:host=localhost;port=3306;dbname=openlearn');
 define('DB_USER','root');
 define('DB_PWD','');
 define('FEES_ENABLED', false);
+

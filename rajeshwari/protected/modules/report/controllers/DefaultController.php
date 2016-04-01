@@ -329,7 +329,11 @@ class DefaultController extends RController
 		  // print_r($data);
 
 		  // echo CHtml::checkBox('select_all',false, array('onclick' => "js:if($(this).is(':checked')) {$('.example').attr('checked','checked');}else{$('.example').removeAttr('checked');}"));
-			echo CHtml::activeCheckBoxList(Subjects::model(), 'id',$data, array( 'id'=>'Subjects1[id]', 'name'=>'Subjects1[id]', 'class'=>'subjects'));
+			?>
+
+
+			<?php
+			echo CHtml::activeCheckBoxList(Subjects::model(), 'id',$data, array( 'id'=>'Subjects1[id]', 'name'=>'Subjects1[id]', 'class'=>'subjects1'));
 		  
 		}
 		
@@ -362,7 +366,7 @@ class DefaultController extends RController
 		  // print_r($data);
 
 		  // echo CHtml::checkBox('select_all',false, array('onclick' => "js:if($(this).is(':checked')) {$('.example').attr('checked','checked');}else{$('.example').removeAttr('checked');}"));
-			echo CHtml::activeCheckBoxList(Subjects::model(), 'id',$data, array( 'id'=>'Subjects2[id]', 'name'=>'Subjects2[id]', 'class'=>'subjects'));
+			echo CHtml::activeCheckBoxList(Subjects::model(), 'id',$data, array( 'id'=>'Subjects2[id]', 'name'=>'Subjects2[id]', 'class'=>'subjects2'));
 		  
 		}
 		
@@ -613,6 +617,7 @@ class DefaultController extends RController
 
 			public function actionCompare_Launch()
 	{
+		$this->layout = '//layouts/main_compare';
 		$this->render('compare_launch', array('request'=>$_REQUEST));
 	}
 

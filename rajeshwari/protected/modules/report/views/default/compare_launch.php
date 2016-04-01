@@ -1,4 +1,11 @@
 <?php
+
+$baseUrl = Yii::app()->baseUrl; 
+  $cs = Yii::app()->getClientScript();
+  $cs->registerScriptFile($baseUrl.'/js/datatables/jquery.dataTables.min.js');
+  $cs->registerCssFile($baseUrl.'/js/datatables/jquery.dataTables.min.css');
+
+
 $criteria  = new CDbCriteria;
 $criteria ->compare('is_deleted',0);
 		          $criteria->order = 'start_date DESC'; 
@@ -66,7 +73,15 @@ echo CHtml::dropDownList('exam_id2','',CHtml::listData($data,'id','name'),array(
 
 <tr>
 <td>
+
 <?php
+
+echo Yii::t('report','Gender 1'); echo '<br />'; 
+echo CHtml::radioButtonList('gender1',$request['gender1'],array('M'=>'Male','F'=>'Female', 'B'=>'Both'),array('separator'=>'')); 
+echo '<br />'; 
+echo '<br />'; 
+ 
+echo Yii::t('report','Subjects 1'); echo '<br />'; 
 $data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$request['exam_id1']));
 					$subjects = array();
 						$subject_l = array();
@@ -77,16 +92,32 @@ $data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$request['exam_id1'
 							$subject_l = array_merge($sub, $subject_l);
 							
 						}
-						$data=CHtml::listData($subject_l,'id','name');
+						$data=CHtml::listData($subject_l,'id','name'); ?>
+
+						<input id="Subjects1_selectall" class="subjects" value="" type="checkbox" name="s1" onclick='$(".subjects1").prop("checked", $(this).prop("checked"));'>
+						<label for="Subjects1_selectall">Select All</label>
+						<br />
+						<?php 
 						echo '<div id="subject1" style="max-height: 100px; overflow-y: auto;">';
 						$model = Subjects::model();
-						$model->id = $request['Subjects1']['id'];
-					echo CHtml::activeCheckBoxList($model, 'id',$data, array( 'id'=>'Subjects1[id]', 'name'=>'Subjects1[id]', 'class'=>'subjects'));
+						$model->id = $request['Subjects1']['id']; ?>
+						
+
+
+						<?php
+					echo CHtml::activeCheckBoxList($model, 'id',$data, array( 'id'=>'Subjects1[id]', 'name'=>'Subjects1[id]', 'class'=>'subjects1'));
 					echo '</div>';
 ?>
 </td>
 <td>
 <?php
+
+echo Yii::t('report','Gender 2'); echo '<br />'; 
+echo CHtml::radioButtonList('gender2',$request['gender2'],array('M'=>'Male','F'=>'Female', 'B'=>'Both'),array('separator'=>'')); 
+echo '<br />'; 
+echo '<br />'; 
+
+echo Yii::t('report','Subjects 2'); echo '<br />'; 
 $data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$request['exam_id2']));
 					$subjects = array();
 						$subject_l = array();
@@ -97,11 +128,21 @@ $data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$request['exam_id2'
 							$subject_l = array_merge($sub, $subject_l);
 							
 						}
-						$data=CHtml::listData($subject_l,'id','name');
+						$data=CHtml::listData($subject_l,'id','name'); ?>
+
+						<input id="Subjects2_selectall" class="subjects" value="" type="checkbox" name="s2" onclick='$(".subjects2").prop("checked", $(this).prop("checked"));'>
+						<label for="Subjects2_selectall">Select All</label>
+						<br />
+
+<?php 
 						echo '<div id="subject2" style="max-height: 100px; overflow-y: auto;">';
 						$model = Subjects::model();
-						$model->id = $request['Subjects2']['id'];
-					echo CHtml::activeCheckBoxList($model, 'id',$data, array( 'id'=>'Subjects2[id]', 'name'=>'Subjects2[id]','class'=>'subjects'));
+						$model->id = $request['Subjects2']['id']; ?>
+
+
+
+						<?php 
+					echo CHtml::activeCheckBoxList($model, 'id',$data, array( 'id'=>'Subjects2[id]', 'name'=>'Subjects2[id]','class'=>'subjects2'));
 					echo '</div>';
 ?>
 </td>
@@ -111,11 +152,11 @@ $data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$request['exam_id2'
 <div style="margin-top:10px;"><?php echo CHtml::submitButton( 'Submit',array('name'=>'search','class'=>'formbut')); ?></div> 
 
 <?php if($request['Subjects2']['id'] != null) { ?>
-<div style="width: 100%; overflow: auto;">
-<table>
+<div style="">
+<table class="dttholder">
 <tr>
-<td><?php printTable($request['batch1'], $request['exam_id1'], $request['Subjects1']['id']); ?></td>
-<td><?php printTable($request['batch2'], $request['exam_id2'], $request['Subjects2']['id']); ?></td>
+<td><?php printTable($request['batch1'], $request['exam_id1'], $request['Subjects1']['id'], $request['gender1'], "dtt1"); ?></td>
+<td><?php printTable($request['batch2'], $request['exam_id2'], $request['Subjects2']['id'], $request['gender2'], "dtt2"); ?></td>
 </tr>
 </table>
 </div>
@@ -131,7 +172,7 @@ $data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$request['exam_id2'
  <?php
 
 
- function printTable($batch_id, $exam_id, $subjects) {
+ function printTable($batch_id, $exam_id, $subjects, $gender, $tid) {
 
 	$criteria = new CDbCriteria;
 	$criteria->condition='exam_group_id LIKE :match';
@@ -139,10 +180,11 @@ $data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$request['exam_id2'
 	$criteria->order = 'id ASC';
 	$list = Exams::model()->findAll($criteria);
     ?>
-    <div class="tablebx" style="overflow-x:auto; background: #fff;">
+    <div class="tablebx" style="background: #fff;">
     	<!-- Assessment Table -->
-    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    	<table id="<?php echo $tid; ?>">
         	<!-- Table Headers -->
+        	<thead>
         	<tr class="tablebx_topbg">
                 <td style="width:90px;"><?php echo Yii::t('students','Admn No.');?></td>
                 <td style="width:auto;min-width:100px;"><?php echo Yii::t('students','Name');?></td>
@@ -160,6 +202,7 @@ $data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$request['exam_id2'
 				<td style="width:auto;min-width:100px;"><?php echo Yii::t('students','Result');?></td>
 				
             </tr>
+            </thead>
             <!-- End Table Headers -->
             <?php
 			
@@ -172,6 +215,11 @@ $data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$request['exam_id2'
 					$total_max = 0;
 					$result = "PASS";
 					$grd = 0;
+					if($gender != 'B') {
+						if($student->gender!= NULL && ($gender == 'M' && $student->gender=='F') || ($gender == 'F' && $student->gender=='M') ) {
+							continue;
+						}
+					}
 				?> 
 					<tr class=<?php echo $cls; ?> >
 						<td>
@@ -197,7 +245,7 @@ $data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$request['exam_id2'
 							$total_max += $exam->maximum_marks;
 						?>
 							<!-- Mark and Remarks Column -->
-							<table align="center" width="100%" style="border:none;width:auto; min-width:80px;">
+							<table align="center" style="border:none;width:auto; min-width:80px;">
 								<tr>
 									<td style="border:none;<?php if($score->is_failed == 1){?>color:#F00;<?php }?>">
 										<?php 
@@ -338,6 +386,44 @@ $data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$request['exam_id2'
         </table>
         <!-- End Assessment Table -->
     </div> 
+
+    <script type="text/javascript">
+	$(document).ready( function () {
+
+/*
+	$("#Subjects1_selectall").change(function(){
+		console.log($(".subjects1"));
+		$(".subjects1").prop('checked', $(this).prop("checked"));
+	});
+
+	$("#Subjects2_selectall").change(function(){
+		$(".subjects2").prop("checked", $(this).prop("checked"));
+	});
+
+*/
+		$("#dtt1").dataTable().fnDestroy();
+
+		$("#dtt2").dataTable().fnDestroy();
+
+	    $('#dtt1').DataTable( {
+    		paging: false,
+    		searching: false
+		} );
+		$('#dtt2').DataTable( {
+    		paging: false,
+    		searching: false
+		} );
+
+
+
+
+	} );
+
+
+
+
+
+    </script>
     <?php
  }
 

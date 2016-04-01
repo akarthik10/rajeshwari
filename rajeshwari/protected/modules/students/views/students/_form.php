@@ -83,6 +83,9 @@ else
                     <td style="padding-left:8px;">
 						<?php echo $form->textField($model,'admission_no',array('size'=>20,'maxlength'=>255/*,'value'=>$adm_no_1,'disabled'=>true*/)); 
                        // echo $form->hiddenField($model,'admission_no',array('value'=>$adm_no_1)); 
+                        if(defined("ADM_NO_FORMAT_CHECK") && ADM_NO_FORMAT_CHECK ) {
+                            echo "<br /><br />Enter admission no in format: ".ADM_NO_FORMAT_STR ;
+                        }
                        ?>
                         <?php echo $form->error($model,'admission_no'); ?>
                     </td>

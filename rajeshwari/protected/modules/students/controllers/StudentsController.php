@@ -130,6 +130,9 @@ class StudentsController extends RController
 				$data = file_get_contents($file->tempName);
 				$model->photo_data=base64_encode($data);
       		  }
+
+
+
 			  /*else{
 				  if(isset($_POST['photo_file_name'])){
 		              $model->photo_file_name=$_POST['photo_file_name'];

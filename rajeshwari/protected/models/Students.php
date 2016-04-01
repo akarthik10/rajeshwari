@@ -75,7 +75,8 @@ class Students extends CActiveRecord
 	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
-		return array(
+		$ret = array();
+		$ret = array(
 			array('parent_id, batch_id, nationality_id, student_category_id, country_id, immediate_contact_id, is_sms_enabled, is_active, is_deleted, has_paid_fees, photo_file_size, pin_code, phone1, phone2, user_id, uid', 'numerical', 'integerOnly'=>true),
 			//array('first_name, last_name, email', 'required',),
 			array('first_name, admission_no,student_category_id', 'required',),
@@ -95,9 +96,19 @@ class Students extends CActiveRecord
 
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
+
 			array('photo_data', 'file', 'types'=>'jpg, gif, png', 'allowEmpty' => true, 'maxSize'=>716800, 'tooLarge'=>'File has to be smaller than 500KB'),
 			array('id, admission_no, parent_id, class_roll_no, admission_date, first_name, middle_name, last_name, batch_id, date_of_birth, gender, blood_group, birth_place, nationality_id, language, religion, student_category_id, address_line1, address_line2, city, state, pin_code, country_id, phone1, phone2, email, immediate_contact_id, is_sms_enabled, photo_file_name, photo_content_type, status_description, is_active, is_deleted, created_at, updated_at, has_paid_fees, photo_file_size, user_id, medium_of_instruction, caste, aadhar_card_no, scholarship_code,identification_mark, vaccinated, place_of_stay, no_of_brothers, no_of_sisters, tc_given, tc_remarks, child_code, bank_account_no', 'safe', 'on'=>'search'),
 		);
+
+		if(defined("ADM_NO_FORMAT_CHECK") && ADM_NO_FORMAT_CHECK ) {
+			array_push($ret, array(
+            'admission_no',
+            'match', 'pattern' => '/^'.ADM_NO_FORMAT_REGEX.'$/',
+            'message' => 'Invalid admission no. format',
+        ));
+        }
+        return $ret;
 	}
 
 	/**

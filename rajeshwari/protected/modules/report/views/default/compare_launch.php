@@ -153,6 +153,19 @@ $data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$request['exam_id2'
 
 <?php if($request['Subjects2']['id'] != null) { ?>
 <div style="">
+
+<table border="0" cellspacing="5" cellpadding="5">
+        <tbody><tr>
+            <td>Minimum percent:</td>
+            <td><input type="text" id="min" name="min"></td>
+        </tr>
+        <tr>
+            <td>Maximum percent:</td>
+            <td><input type="text" id="max" name="max"></td>
+        </tr>
+        
+    </tbody></table>
+
 <table class="dttholder">
 <tr>
 <td><?php printTable($request['batch1'], $request['exam_id1'], $request['Subjects1']['id'], $request['gender1'], "dtt1"); ?></td>
@@ -388,6 +401,10 @@ $data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$request['exam_id2'
     </div> 
 
     <script type="text/javascript">
+
+
+
+
 	$(document).ready( function () {
 
 /*
@@ -401,25 +418,52 @@ $data=Exams::model()->findAll('exam_group_id=:x',array(':x'=>$request['exam_id2'
 	});
 
 */
-		$("#dtt1").dataTable().fnDestroy();
 
-		$("#dtt2").dataTable().fnDestroy();
+    $.fn.dataTable.ext.search.push(
+    function( settings, data, dataIndex ) {
+    	
+        var min = parseInt( $('#min').val(), 10 );
+        var max = parseInt( $('#max').val(), 10 );
+        var age = parseFloat( data[data.length-2] ) || 0; // use data for the age column
+ 
+        	if ( ( isNaN( min ) && isNaN( max ) ) ||
+             	( isNaN( min ) && age <= max ) ||
+             	( min <= age   && isNaN( max ) ) ||
+             	( min <= age   && age <= max ) )
+        	{
+            return true;
+        	}
+        	return false;
+    	}
+	);
 
-	    $('#dtt1').DataTable( {
-    		paging: false,
-    		searching: false
-		} );
-		$('#dtt2').DataTable( {
-    		paging: false,
-    		searching: false
-		} );
 
 
+    inittables();
+$('#min, #max').keyup( function() {
+        table1.draw();
+        table2.draw();
+    } );
 
 
 	} );
 
+function inittables() {
+			$("#dtt1").dataTable().fnDestroy();
 
+		$("#dtt2").dataTable().fnDestroy();
+
+	    table1 = $('#dtt1').DataTable( {
+    		paging: false,
+    		searching: true,
+    		"dom": 't'
+		} );
+		table2 = $('#dtt2').DataTable( {
+    		paging: false,
+    		searching: true,
+    		"dom": 't'
+		} );
+}
 
 
 

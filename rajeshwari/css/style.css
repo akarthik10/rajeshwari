@@ -6602,4 +6602,5 @@ a.formbut_yellow {
 .dttholder td {
 	overflow: auto;
 	padding: 10px;
+	vertical-align: top;
 }

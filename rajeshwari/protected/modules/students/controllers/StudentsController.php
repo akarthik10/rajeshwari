@@ -223,6 +223,18 @@ class StudentsController extends RController
 	}
 	
 
+
+public function actionDynamicbatch()
+{
+    $data= Batches::model()->findAll("is_deleted=:x and course_id=:y", array(':x'=>'0', ':y'=>$_REQUEST['Courses']['id']));
+    $data=CHtml::listData($data,'id','name');
+    foreach($data as $value=>$name)
+    {
+        echo CHtml::tag('option',
+                   array('value'=>$value),CHtml::encode($name),true);
+    }
+}
+
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.

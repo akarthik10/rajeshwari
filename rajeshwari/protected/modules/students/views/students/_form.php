@@ -152,6 +152,78 @@ else
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 </tr>
+
+
+                <tr>
+                <td valign="bottom"><?php echo 'Course'; ?></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td><td>&nbsp;</td>
+                </tr>
+ <tr>
+                    <td valign="top">
+                        
+                        <?php   
+                        $models = Courses::model()->findAll("is_deleted=:x", array(':x'=>'0'));
+                        $data = array();
+                        foreach ($models as $model_1)
+                        {
+                            //$posts=Batches::model()->findByPk($model_1->id);
+                            $data[$model_1->id] = $model_1->course_name;
+                        }
+                        ?>
+                        
+                        <?php 
+                        
+                        if(isset($_REQUEST['Courses']['id']) and $_REQUEST['Courses']['id']!=NULL)
+                        {
+                            echo $form->dropDownList(Courses::model(),'id',$data,array('options' => array($_REQUEST['Courses']['id']=>array('selected'=>true)),
+                            'style'=>'width:170px;','empty'=>'Select Course',
+                                                        'ajax' => array(
+                                'type'=>'POST', //request type
+                                'url'=>CController::createUrl('students/dynamicbatch'), //url to call.
+                                //Style: CController::createUrl('currentController/methodToCall')
+                                'update'=>'#Students_batch_id', //selector to update
+                                //'data'=>'js:javascript statement' 
+                                )
+                            )
+                            ); 
+                        }
+                        else
+                        {
+                            echo $form->dropDownList(Courses::model(),'id',$data,array(
+                            'style'=>'width:130px ;','empty'=>'Select Course',
+                                                             'ajax' => array(
+                                'type'=>'POST', //request type
+                                'url'=>CController::createUrl('students/dynamicbatch'), //url to call.
+                                //Style: CController::createUrl('currentController/methodToCall')
+                                'update'=>'#Students_batch_id', //selector to update
+                                //'data'=>'js:javascript statement' 
+                                )
+                            )
+
+
+
+                            ); 
+                        }
+                        ?>
+                       
+                        <?php echo $form->error($model,'batch_id'); ?>
+                       
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    </tr>
+
+                <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                </tr>
+
                 <tr>
                 <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','batch_id')); ?></td>
                 <td>&nbsp;</td>
@@ -159,10 +231,31 @@ else
                 <td>&nbsp;</td>
                 <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','gender')); ?></td>
                 </tr>
+
                 <tr>
                     <td valign="top">
                     	
 						<?php   
+
+                        if(isset($_REQUEST['Courses']['id']) && $_REQUEST['Courses']['id']!= NULL) {
+                            $models = Batches::model()->findAll("is_deleted=:x and course_id=:y", array(':x'=>'0', ':y'=>$_REQUEST['Courses']['id']));
+                            $data = array();
+                            foreach ($models as $model_1)
+                            {
+                            //$posts=Batches::model()->findByPk($model_1->id);
+                            $data[$model_1->id] = $model_1->name;
+                            
+                            }
+                            echo $form->dropDownList($model,'batch_id',$data,array('options' => array($_REQUEST['Students']['batch_id']=>array('selected'=>true)),
+                            'style'=>'width:170px;','empty'=>'Select Batch'
+                            )); 
+
+
+                        } else {
+                            echo CHtml::dropDownList('Students[batch_id]','', array());    
+                        }
+                        
+/*
                         $models = Batches::model()->findAll("is_deleted=:x", array(':x'=>'0'));
                         $data = array();
                         foreach ($models as $model_1)
@@ -185,7 +278,7 @@ else
                             echo $form->dropDownList($model,'batch_id',$data,array(
                             'style'=>'width:130px ;','empty'=>'Select Batch'
                             )); 
-                        }
+                        }*/
                         ?>
                        
                         <?php echo $form->error($model,'batch_id'); ?>

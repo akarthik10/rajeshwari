@@ -76,6 +76,22 @@ class CoursesController extends RController
 			
 			if($model_1->validate())
 			{
+					$list = $_POST['Courses'];
+					if(!$list['start_date']){
+						$s_d="";
+					}
+					else{
+						$s_d=date('Y-m-d',strtotime($list['start_date']));
+					}
+					if(!$list['end_date']){
+						$e_d="";
+					}
+					else{
+						$e_d=date('Y-m-d',strtotime($list['end_date']));
+					}
+					$model->start_date = $s_d;
+					$model->end_date = $e_d;
+
 				if($model->save())
 				{
 					
@@ -119,6 +135,10 @@ class CoursesController extends RController
         {       $flag=false;
 		    	$model=$this->loadModel($_GET['val1']);
 				$model->attributes=$_POST['Courses'];
+
+				$model->start_date = date('Y-m-d',strtotime($_POST['Courses']['start_date']));
+				$model->end_date = date('Y-m-d',strtotime($_POST['Courses']['end_date']));
+
 				$model->save();
 				
               	

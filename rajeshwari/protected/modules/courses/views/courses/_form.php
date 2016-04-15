@@ -38,6 +38,77 @@
     <td><?php echo $form->textField($model,'section_name',array('size'=>40,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'section_name'); ?></td>
   </tr>
+   <tr>
+  	<td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+    <tr>
+    <td  ><?php echo $form->labelEx($model,'start_date'); ?></td>
+   <td> <?php //echo $form->textField($model_1,'start_date');
+   				$settings=UserSettings::model()->findByAttributes(array('user_id'=>Yii::app()->user->id));
+				if($settings!=NULL)
+					{
+						
+						$date=$settings->dateformat;
+		
+		
+					}
+					else
+					$date = 'dd-mm-yy';	
+						$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+								'model'=>$model,
+								'attribute'=>'start_date', 
+								// additional javascript options for the date picker plugin
+								'options'=>array(
+									'showAnim'=>'fold',
+									'dateFormat'=>$date,
+									'changeMonth'=> true,
+									'changeYear'=>true,
+									'yearRange'=>$daterange_1.':'.$daterange,
+									),
+								'htmlOptions'=>array(
+									'style'=>'height:20px;'
+								),
+							));
+    ?>
+		<?php echo $form->error($model,'start_date'); ?></td>
+  </tr>
+
+ <tr>
+  	<td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+    <tr>
+    <td  ><?php echo $form->labelEx($model,'end_date'); ?></td>
+   <td> <?php //echo $form->textField($model_1,'start_date');
+   				$settings=UserSettings::model()->findByAttributes(array('user_id'=>Yii::app()->user->id));
+				if($settings!=NULL)
+					{
+						
+						$date=$settings->dateformat;
+		
+		
+					}
+					else
+					$date = 'dd-mm-yy';	
+						$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+								'model'=>$model,
+								'attribute'=>'end_date', 
+								// additional javascript options for the date picker plugin
+								'options'=>array(
+									'showAnim'=>'fold',
+									'dateFormat'=>$date,
+									'changeMonth'=> true,
+									'changeYear'=>true,
+									'yearRange'=>$daterange_1.':'.$daterange,
+									),
+								'htmlOptions'=>array(
+									'style'=>'height:20px;'
+								),
+							));
+    ?>
+		<?php echo $form->error($model,'start_date'); ?></td>
+  </tr>
  
 </table>
 <?php $daterange=date('Y')+20;

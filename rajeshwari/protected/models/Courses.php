@@ -41,12 +41,12 @@ class Courses extends CActiveRecord
 		return array(
 			array('is_deleted', 'numerical', 'integerOnly'=>true),
 			array('course_name, code, section_name', 'length', 'max'=>255),
-			array('created_at, updated_at', 'safe'),
+			array('created_at, updated_at, start_date, end_date', 'safe'),
 			array('course_name, code, section_name', 'required'),
 			
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, course_name, code, section_name, is_deleted, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, course_name, code, section_name, is_deleted, created_at, updated_at, start_date, end_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -78,6 +78,8 @@ class Courses extends CActiveRecord
 			'is_deleted' => 'Is Deleted',
 			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
+			'start_date' => 'Start Date',
+			'end_date' => 'End Date',
 		);
 	}
 
@@ -99,6 +101,8 @@ class Courses extends CActiveRecord
 		$criteria->compare('is_deleted',0);
 		$criteria->compare('created_at',$this->created_at,true);
 		$criteria->compare('updated_at',$this->updated_at,true);
+		$criteria->compare('start_date',$this->start_date,true);
+		$criteria->compare('end_date',$this->end_date,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -48,6 +48,82 @@
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
+
+    <tr>
+    <td><?php echo $form->labelEx($model,'start_date'); ?></td>
+    <td>&nbsp;</td>
+    <td><?php $settings=UserSettings::model()->findByAttributes(array('user_id'=>Yii::app()->user->id));
+      if($settings!=NULL)
+      {
+        $date=$settings->dateformat;
+    
+    
+      }
+      else
+        $date = 'dd-mm-yy'; 
+          
+            $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                //'name'=>'Students[admission_date]',
+                'model'=>$model,
+                'attribute'=>'start_date',
+                // additional javascript options for the date picker plugin
+                'options'=>array(
+                  'showAnim'=>'fold',
+                  'dateFormat'=>$date,
+                  'changeMonth'=> true,
+                  'changeYear'=>true,
+                  'yearRange'=>'1900:'
+                ),
+                'htmlOptions'=>array(
+                  'style'=>'height:20px;'
+                ),
+              ));?>
+    <?php echo $form->error($model,'start_date'); ?></td>
+  </tr>
+
+   <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
+<tr>
+    <td><?php echo $form->labelEx($model,'end_date'); ?></td>
+    <td>&nbsp;</td>
+    <td><?php $settings=UserSettings::model()->findByAttributes(array('user_id'=>Yii::app()->user->id));
+      if($settings!=NULL)
+      {
+        $date=$settings->dateformat;
+    
+    
+      }
+      else
+        $date = 'dd-mm-yy'; 
+          
+            $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                //'name'=>'Students[admission_date]',
+                'model'=>$model,
+                'attribute'=>'end_date',
+                // additional javascript options for the date picker plugin
+                'options'=>array(
+                  'showAnim'=>'fold',
+                  'dateFormat'=>$date,
+                  'changeMonth'=> true,
+                  'changeYear'=>true,
+                  'yearRange'=>'1900:'
+                ),
+                'htmlOptions'=>array(
+                  'style'=>'height:20px;'
+                ),
+              ));?>
+    <?php echo $form->error($model,'end_date'); ?></td>
+  </tr>
+
+   <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
    <tr>
   	<td>&nbsp;</td>
     <td>&nbsp;</td>

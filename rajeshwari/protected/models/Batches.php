@@ -45,7 +45,7 @@ class Batches extends CActiveRecord
 			array('start_date, end_date', 'safe'),
 			// The following rule is used by search().
 			array('name, start_date, end_date', 'required'),
-			array('name','CRegularExpressionValidator', 'pattern'=>'/^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/','message'=>"{attribute} should not contain any special character(s)."),
+			/*array('name','CRegularExpressionValidator', 'pattern'=>'/^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/','message'=>"{attribute} should not contain any special character(s)."),*/
 			// Please remove those attributes that should not be searched.
 			array('id, name, course_id, start_date, end_date, is_active, is_deleted, employee_id', 'safe', 'on'=>'search'),
 		);

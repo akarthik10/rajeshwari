@@ -175,6 +175,14 @@ else
                         
                         <?php 
                         
+
+
+                        if($model->batch_id != NULL) {
+                                $modelb = Batches::model()->findByAttributes(array('id'=>$model->batch_id));
+                                $_REQUEST['Courses']['id'] = $modelb->course_id;
+                            
+                        }
+
                         if(isset($_REQUEST['Courses']['id']) and $_REQUEST['Courses']['id']!=NULL)
                         {
                             echo $form->dropDownList(Courses::model(),'id',$data,array('options' => array($_REQUEST['Courses']['id']=>array('selected'=>true)),

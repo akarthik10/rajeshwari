@@ -703,4 +703,48 @@ $data = FinanceFeeParticulars::model()->findAll("finance_fee_category_id=:x", ar
 	{
 		$this->render('transaction');
 	}
+
+public function actionSendSMSFeeReminder(){
+		/*echo 'Batch ID: '.$_REQUEST['batch_id'].'<br/>';
+		echo 'Fee Collection ID: '.$_REQUEST['collection'].'<br/>';
+		echo 'Days in between: '.$_REQUEST['date_status'].'<br/>';
+		echo 'Amount: '.$_REQUEST['amount'].'<br/>';*/
+		$sms_settings=SmsSettings::model()->findAll();
+		if($sms_settings[0]->is_enabled=='1' and $sms_settings[7]->is_enabled=='1'){ // Checking if SMS is enabled.
+			$collection = FinanceFeeCollections::model()->findByAttributes(array('id'=>$_REQUEST['collection']));
+			/*echo 'Fees Name: '.$collection->name.'<br/>';
+			echo 'Due Date: '.$collection->due_date.'<br/>';*/
+			$unpaid_students  = FinanceFees::model()->findAll("fee_collection_id=:x and is_paid=:y", array(':x'=>$_REQUEST['collection'],':y'=>0));
+			$to_parent = '';
+			//echo 'Total unpaid students: '.count($unpaid_students).'<br/><br/>';
+			foreach ($unpaid_students as $unpaid_student){
+				//echo 'Student ID: '.$unpaid_student->student_id.'<br/>';
+				$student=Students::model()->findByAttributes(array('id'=>$unpaid_student->student_id));
+				$guardian = Guardians::model()->findByAttributes(array('ward_id'=>$student->id));
+				/*echo 'Name: '.$student->first_name.'<br/>';
+				echo 'Phone 1: '.$student->phone1.'<br/>';*/
+				
+
+				if(count($guardian)!=0 and $guardian->mobile_phone!=NULL){ // If guardian is added
+					$to_parent .= $guardian->mobile_phone.",";
+				}
+				
+				//if($message!='' && 0){ // Send SMS if message is set
+				
+					
+				//} // End check if message is set
+				
+			} // End for each student
+			if($to_parent!=''){ // If unpaid and parent phone number is provided, send SMS
+				SmsSettings::model()->sendSmsFeeReminder($to_parent);
+			} // End check if parent phone number is provided
+					
+					
+					
+					
+			//exit;
+		} // End check whether SMS is enabled
+		Yii::app()->user->setFlash('notification','SMS sent Successfully!');
+		$this->redirect(array('unpaid','batch'=>$_REQUEST['batch'],'collection'=>$_REQUEST['collection']));
+	} // End send SMS function
 }

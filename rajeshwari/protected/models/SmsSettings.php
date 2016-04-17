@@ -22,7 +22,7 @@ class SmsSettings extends CActiveRecord
 
 	protected $smsuid="";
 	protected $smspin="";
-	protected $smsroute="5";
+	protected $smsroute="";
 	protected $smssender="";
 
 	/**
@@ -284,8 +284,8 @@ class SmsSettings extends CActiveRecord
 	
 
 		
-			$tempid="45140";
-			$message = "Admission: Dear $name, You've been admitted to $collegename. Your admission no. is $admission_no . Thank you.";
+			$tempid="44445";
+			$message = "Dear Parents, Your ward $name has been admitted to $collegename. The admission no. is $admission_no . Thank you.  From: Rajeshwari Higher Primary English Medium School, Yadgiri.";
 
 			// $domain="www.bulksmsgateway.in";
 			// $priority="3";// 1-Normal,2-Priority,3-Marketing
@@ -324,7 +324,7 @@ class SmsSettings extends CActiveRecord
 			curl_setopt($ch, CURLOPT_HEADER,0);  // DO NOT RETURN HTTP HEADERS 
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);  // RETURN THE CONTENTS OF THE CALL
 			$return_val = curl_exec($ch);
-		
+			file_put_contents("admission_sms.log", $parameters. " ; Response: ". $return_val.PHP_EOL, FILE_APPEND);
 			
 		return 1 ;
 		
@@ -339,9 +339,12 @@ class SmsSettings extends CActiveRecord
 	{
 		
 		
-			$tempid="45139";
-			$message = "Fee: Dear $name, Fee paid Rs. $fees. Balance Rs. $balance. Thank you.";
+			$tempid="45142";
+                        $today = date("j-M-Y");
+			//$message = "Fee: Dear $name, Fee paid Rs. $fees. Balance Rs. $balance. Thank you.";
+                        $message = "Dear Parent, We have received an amount of Rs. $fees on $today from your ward $name. Thank you. From: Rajeshwari Higher Primary English Medium School, Yadgiri.";
 			
+
 			// $domain="www.bulksmsgateway.in";
 			// $priority="3";// 1-Normal,2-Priority,3-Marketing
 			$method="POST";
@@ -357,7 +360,7 @@ class SmsSettings extends CActiveRecord
 			$message		= urlencode($message);
 		
 			$parameters="uid=$uid&pin=$pin&route=$route&sender=$sender&tempid=$tempid&mobile=$mobile&message=$message&pushid=1";
-		// file_put_contents("data.txt", $parameters);
+		 //file_put_contents("data.txt", $parameters);
 			$url="http://sms.thirstyscholarstech.com/api/sms.php";
 		
 			$ch = curl_init($url);
@@ -379,7 +382,7 @@ class SmsSettings extends CActiveRecord
 			curl_setopt($ch, CURLOPT_HEADER,0);  // DO NOT RETURN HTTP HEADERS 
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);  // RETURN THE CONTENTS OF THE CALL
 			$return_val = curl_exec($ch);
-				
+			file_put_contents("fee_sms.log", $parameters. " ; Response: ". $return_val.PHP_EOL, FILE_APPEND);
 			
 		return 1 ;
 		
@@ -396,8 +399,8 @@ class SmsSettings extends CActiveRecord
 	
 
 		
-			$tempid="45141";
-			$message = "Results Declared: Dear #FIELD2#, The result of examination #FIELD3# is : #FIELD4#. Total #FIELD5#. Thank you.";
+			$tempid="44444";
+			$message = "Results Declared: Dear #FIELD2#, The result of examination #FIELD3# is : #FIELD4#. Total #FIELD5#. Thank you.  From: Rajeshwari Higher Primary English Medium School, Yadgiri.";
 
 			// $domain="www.bulksmsgateway.in";
 			// $priority="3";// 1-Normal,2-Priority,3-Marketing
@@ -437,6 +440,7 @@ class SmsSettings extends CActiveRecord
 			curl_setopt($ch, CURLOPT_HEADER,0);  // DO NOT RETURN HTTP HEADERS 
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);  // RETURN THE CONTENTS OF THE CALL
 			$return_val = curl_exec($ch);
+		file_put_contents("exam_sms.log", $parameters. " ; Response: ". $return_val.PHP_EOL, FILE_APPEND);
 		
 			
 		return 1 ;
@@ -447,4 +451,110 @@ class SmsSettings extends CActiveRecord
 	
 		
 		}
+
+
+		public function sendSmsFeeReminder($to)
+	{
+		
+		
+			$tempid="60596";
+			//$message = "Fee: Dear $name, Fee paid Rs. $fees. Balance Rs. $balance. Thank you.";
+                        $message = "Dear Parents, as per our records you are requested to pay the due fees. Please pay it as soon as possible. Ignore if already paid. From: Rajeshwari Higher Primary English Medium School, Yadgiri.";
+			
+
+			// $domain="www.bulksmsgateway.in";
+			// $priority="3";// 1-Normal,2-Priority,3-Marketing
+			$method="POST";
+				
+			$mobile			= $to;
+			$message		= $message;
+			
+			
+			$uid		= urlencode($this->smsuid);
+			$pin	= urlencode($this->smspin);
+			$sender			= urlencode($this->smssender);
+			$route			= urlencode($this->smsroute);
+			$message		= urlencode($message);
+		
+			$parameters="uid=$uid&pin=$pin&route=$route&sender=$sender&tempid=$tempid&message=$message&pushid=1&mobile=$mobile";
+		 //file_put_contents("data.txt", $parameters);
+			$url="http://sms.thirstyscholarstech.com/api/sms.php";
+		
+			$ch = curl_init($url);
+		
+			if($method=="POST")
+			{
+				curl_setopt($ch, CURLOPT_POST,1);
+				curl_setopt($ch, CURLOPT_POSTFIELDS,$parameters);
+			}
+			else
+			{
+				$get_url=$url."?".$parameters;
+		
+				curl_setopt($ch, CURLOPT_POST,0);
+				curl_setopt($ch, CURLOPT_URL, $get_url);
+			}
+		
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1); 
+			curl_setopt($ch, CURLOPT_HEADER,0);  // DO NOT RETURN HTTP HEADERS 
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);  // RETURN THE CONTENTS OF THE CALL
+			$return_val = curl_exec($ch);
+			file_put_contents("fee_sms.log", $parameters. " ; Response: ". $return_val.PHP_EOL, FILE_APPEND);
+			
+		return 1 ;	
+				
+		}
+
+		public function sendSmsAttendanceReport($to,$date)
+		{
+		
+		
+			$tempid="60611";
+			//$message = "Fee: Dear $name, Fee paid Rs. $fees. Balance Rs. $balance. Thank you.";
+                        $message = "Dear Parents, This is to inform you that your ward didn't attend classes on ".$date.". From: Rajeshwari Higher Primary English Medium School, Yadgiri.";
+			
+
+			// $domain="www.bulksmsgateway.in";
+			// $priority="3";// 1-Normal,2-Priority,3-Marketing
+			$method="POST";
+				
+			$mobile			= $to;
+			$message		= $message;
+			
+			
+			$uid		= urlencode($this->smsuid);
+			$pin	= urlencode($this->smspin);
+			$sender			= urlencode($this->smssender);
+			$route			= urlencode($this->smsroute);
+			$message		= urlencode($message);
+		
+			$parameters="uid=$uid&pin=$pin&route=$route&sender=$sender&tempid=$tempid&message=$message&pushid=1&mobile=$mobile";
+		 //file_put_contents("data.txt", $parameters);
+			$url="http://sms.thirstyscholarstech.com/api/sms.php";
+		
+			$ch = curl_init($url);
+		
+			if($method=="POST")
+			{
+				curl_setopt($ch, CURLOPT_POST,1);
+				curl_setopt($ch, CURLOPT_POSTFIELDS,$parameters);
+			}
+			else
+			{
+				$get_url=$url."?".$parameters;
+		
+				curl_setopt($ch, CURLOPT_POST,0);
+				curl_setopt($ch, CURLOPT_URL, $get_url);
+			}
+		
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1); 
+			curl_setopt($ch, CURLOPT_HEADER,0);  // DO NOT RETURN HTTP HEADERS 
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);  // RETURN THE CONTENTS OF THE CALL
+			$return_val = curl_exec($ch);
+			file_put_contents("attendance_sms.log", $parameters. " ; Response: ". $return_val.PHP_EOL, FILE_APPEND);
+			
+		return 1 ;	
+				
+		}
 }
+

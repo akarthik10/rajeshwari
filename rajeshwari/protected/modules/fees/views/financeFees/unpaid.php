@@ -116,10 +116,18 @@ echo '<br/><br/>';
 	$list  = FinanceFees::model()->findAll("fee_collection_id=:x and is_paid=:y", array(':x'=>$_REQUEST['collection'],':y'=>0));
 		
 		?>
+		</td>
 		<td>
+		<?php echo CHtml::link('Send SMS', array('/fees/FinanceFees/SendSMSFeeReminder','batch'=>$_REQUEST['batch'],'collection'=>$_REQUEST['collection'])); ?>
+		</td>
 		 </tr>
 	</table>
 	</div></div>
+	<?php
+    foreach(Yii::app()->user->getFlashes() as $key => $message) {
+        echo '<div class="flash-' . $key . '">' . $message . "</div>\n";
+    }
+	?>
 	
 	   <div class="tableinnerlist">
 	   	<div class="ea_pdf" style="top:6px; right:1px;"><?php echo CHtml::link('<img src="images/pdf-but.png" border="0" />', array('/fees/FinanceFees/unpaidpdf','batch'=>$_REQUEST['batch'],'collection'=>$_REQUEST['collection']),array('target'=>"_blank")); ?></div> 
@@ -166,7 +174,7 @@ echo '<br/><br/>';
 			</table> <br /> -->
 		   <table width="90%" cellspacing="0" cellpadding="0">
 			<tr>
-                 <th><strong><?php echo Yii::t('fees','Sl no.');?> </strong></th>
+                 <th><strong><?php echo Yii::t('fees','Sl nos.');?> </strong></th>
                  <th><strong><?php echo Yii::t('fees','Admission No');?></strong></th>
                  <th><strong><?php echo Yii::t('fees','Student Name');?></strong></th>
                  <th><strong><?php echo Yii::t('fees','Category');?></strong></th>

@@ -33,6 +33,7 @@
 						
 						array('label'=>Yii::t('report','Employee Attendance').'<span>'.Yii::t('report','Employee attendance report').'</span>', 'url'=>array('/report/default/employeeattendance'),'active'=>(Yii::app()->controller->action->id=='employeeattendance' ? true : false),'linkOptions'=>array('class'=>'sm_ico')),
 						array('label'=>Yii::t('report','Student Attendance').'<span>'.Yii::t('report','Student attendance report').'</span>', 'url'=>array('/report/default/studentattendance'),'active'=>(Yii::app()->controller->action->id=='studentattendance' ? true : false),'linkOptions'=>array('class'=>'md_ico')),
+						array('label'=>Yii::t('report','SMS Student Attendance').'<span>'.Yii::t('report','SMS Student attendance report').'</span>', 'url'=>array('/report/default/Smsstudentattendance'),'active'=>(Yii::app()->controller->action->id=='Smsstudentattendance' ? true : false),'linkOptions'=>array('class'=>'md_ico')),
 						
 				),
 			)); ?>

@@ -223,7 +223,7 @@ class DefaultController extends RController
 		}
 	}
 
-		public function actionAssessmentSMS()
+	public function actionAssessmentSMS()
 	{
 		$model_1=new ExamGroups;
 		$criteria = new CDbCriteria;
@@ -269,7 +269,7 @@ class DefaultController extends RController
 		  }
 	}
 
-		public function actionExam()
+	public function actionExam()
 	{
 
 
@@ -436,6 +436,13 @@ class DefaultController extends RController
 		}
 		
 	}
+
+	public function actionSmsstudentattendance()
+	{
+		$this->render('Smsstudentattendance');
+	}
+
+
 	public function actionStudentattendance()
 	{
 		if(isset($_POST['batch_id']))
@@ -610,15 +617,50 @@ class DefaultController extends RController
 	}
 
 
-		public function actionCompare()
+	public function actionCompare()
 	{
 		$this->render('compare',array('model_1'=>$model_1));
 	}
 
-			public function actionCompare_Launch()
+	public function actionCompare_Launch()
 	{
 		$this->layout = '//layouts/main_compare';
 		$this->render('compare_launch', array('request'=>$_REQUEST));
 	}
+
+	public function actionSendsms(){ // Function to send Attendance SMS to all students of a batch
+
+	 	$date = $_COOKIE['atten_date'];
+	 	unset($_COOKIE['atten_date']);
+		$sms_settings=SmsSettings::model()->findAll();
+		if($sms_settings[0]->is_enabled=='1' and $sms_settings[3]->is_enabled=='1'){ // Checking if SMS is enabled.
+			$attendances = StudentAttentance::model()->findAll("date=:x", array(':x'=>$date));
+			$to = '';
+		 	foreach ($attendances as $attendance){
+			
+				$guardian = Guardians::model()->findByAttributes(array('ward_id'=>$attendance->student_id));
+				
+				if(count($guardian)!='0'){ // Check if guardian added
+					if($guardian->mobile_phone){ //Checking if phone number is provided
+						$to .= $guardian->mobile_phone.",";
+					}
+					
+				
+			 	} // End check whether students are present in the batch.
+			 }
+
+			 $pieces = explode("-", $date);
+			 $date = $pieces [2]."-".$pieces[1]."-".$pieces[0];
+
+			 SmsSettings::model()->sendSmsAttendanceReport($to,$date);
+			 if(count($attendances)>0){
+			 	Yii::app()->user->setFlash('notification','SMS sent Successfully!');
+			}else{
+				Yii::app()->user->setFlash('notification','No SMS Sent as no absentees found!');
+			}
+			 
+			 $this->render('Smsstudentattendance');
+		}	
+	} // End send SMS function
 
 }

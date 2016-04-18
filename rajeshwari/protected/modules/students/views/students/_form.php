@@ -164,7 +164,8 @@ else
                     <td valign="top">
                         
                         <?php   
-                        $models = Courses::model()->findAll("is_deleted=:x", array(':x'=>'0'));
+                        $models = Courses::model()->findAll(array("condition" => "is_deleted = 0", "order" => "start_date desc"));
+                        //$models = Courses::model()->findAll("is_deleted=:x", array(':x'=>'0'));
                         $data = array();
                         foreach ($models as $model_1)
                         {

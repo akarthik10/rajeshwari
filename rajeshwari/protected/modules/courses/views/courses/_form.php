@@ -9,6 +9,10 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
+<?php $daterange=date('Y')+20;
+ 	  $daterange_1=date('Y')-30;
+	
+		  ?>
 	<p class="note"><?php echo Yii::t('courses','Fields with');?><span class="required">*</span><?php echo Yii::t('courses',' are required.');?></p>
 
 	<?php /*?><?php echo $form->errorSummary($model); ?><?php */?>
@@ -111,10 +115,7 @@
   </tr>
  
 </table>
-<?php $daterange=date('Y')+20;
- 	  $daterange_1=date('Y')-30;
-	
-		  ?>
+
 	<div class="row">
 		<?php //echo $form->labelEx($model,'is_deleted'); ?>
 		<?php echo $form->hiddenField($model,'is_deleted'); ?>

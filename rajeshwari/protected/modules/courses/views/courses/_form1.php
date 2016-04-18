@@ -8,6 +8,12 @@
 
 	<p style="padding-left:20px;"><?php echo Yii::t('courses','Fields with');?><span class="required">*</span><?php echo Yii::t('courses',' are required.');?></p>
 
+<?php $daterange=date('Y')+20;
+    $daterange_1=date('Y')-30;
+  
+      ?>
+
+
 	<?php 
 
 	echo $form->errorSummary($model); ?>
@@ -72,7 +78,7 @@
                   'dateFormat'=>$date,
                   'changeMonth'=> true,
                   'changeYear'=>true,
-                  'yearRange'=>'1900:'
+                  'yearRange'=>$daterange_1.':'.$daterange
                 ),
                 'htmlOptions'=>array(
                   'style'=>'height:20px;'
@@ -110,7 +116,7 @@
                   'dateFormat'=>$date,
                   'changeMonth'=> true,
                   'changeYear'=>true,
-                  'yearRange'=>'1900:'
+                  'yearRange'=>$daterange_1.':'.$daterange,
                 ),
                 'htmlOptions'=>array(
                   'style'=>'height:20px;'

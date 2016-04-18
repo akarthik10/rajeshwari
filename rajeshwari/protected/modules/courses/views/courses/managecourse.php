@@ -69,8 +69,8 @@ function rowdelete(id)
     <td valign="top">
     <div class="cont_right formWrapper">
 <h1><?php echo Yii::t('courses','Manage Courses & Batches');?></h1>
- <div id="jobDialog">
- <div id="jobDialog1">
+ <div id="jobDialog"> </div>
+ <div id="jobDialog1"> </div>
  <?php 
   	   $posts=Courses::model()->findAll("is_deleted =:x", array(':x'=>0));
 			   ?>

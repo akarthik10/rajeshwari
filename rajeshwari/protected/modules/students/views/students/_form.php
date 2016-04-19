@@ -492,10 +492,10 @@ else
                 </tr>
 
 
-                                <tr>
+                <tr>
                     <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','bank_account_no')); ?></td>
                     <td>&nbsp;</td>
-                    <td valign="bottom"></td>
+                    <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','class_roll_no')); ?></td>
                     <td>&nbsp;</td>
                     <td valign="bottom"></td>
                 </tr>
@@ -506,6 +506,8 @@ else
                     </td>
                     <td>&nbsp;</td>
                     <td valign="top">
+                     <?php echo $form->textField($model,'class_roll_no',array('size'=>10,'maxlength'=>255)); ?>
+                     <?php echo $form->error($model,'class_roll_no'); ?>
                     </td>
                     <td>&nbsp;</td>
                     <td valign="top">
@@ -701,11 +703,11 @@ else
             	</tr>
             </table>
             
-            <div class="row">
+            <!--<div class="row">
 				<?php //echo $form->labelEx($model,'class_roll_no'); ?>
                 <?php echo $form->hiddenField($model,'class_roll_no',array('size'=>60,'maxlength'=>255)); ?>
                 <?php echo $form->error($model,'class_roll_no'); ?>
-            </div>
+            </div>-->
             
             <div class="row">
 				<?php //echo $form->labelEx($model,'immediate_contact_id'); ?>

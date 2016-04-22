@@ -95,6 +95,7 @@ echo '<br/><br/>';
 	$collection = FinanceFeeCollections::model()->findByAttributes(array('id'=>$_REQUEST['collection']));
 	//$particular = FinanceFeeParticulars::model()->findByAttributes(array('finance_fee_category_id'=>$collection->fee_category_id));
 	$particular = FinanceFeeParticulars::model()->findAll("finance_fee_category_id=:x", array(':x'=>$collection->fee_category_id));
+	Yii::app()->db->createCommand('update finance_fees set is_paid=0 where date is NULL')->query();
 	$currency=Configurations::model()->findByPk(5);
 	if(count($particular)!=0)
 	{

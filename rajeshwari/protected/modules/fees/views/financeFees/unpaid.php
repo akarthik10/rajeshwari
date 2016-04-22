@@ -84,6 +84,8 @@ echo '<br/><br/>';
 	
 	$student_arr_1=array();
 	
+	Yii::app()->db->createCommand('update finance_fees set is_paid=0 where date is NULL')->query();
+
 	foreach($student_list as $student){
 		foreach($student as $item){
 			array_push($student_arr_1,$item); // Get the ids of students and push into an array
@@ -111,6 +113,8 @@ echo '<br/><br/>';
 			$finance->is_paid = 0;
 			$finance->save();
 		}
+
+
 	//	var_dump($missing_students);
 		//$amount = 0;
 	$list  = FinanceFees::model()->findAll("fee_collection_id=:x and is_paid=:y", array(':x'=>$_REQUEST['collection'],':y'=>0));

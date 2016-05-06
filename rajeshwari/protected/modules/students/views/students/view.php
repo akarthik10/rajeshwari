@@ -191,15 +191,16 @@ $this->breadcrumbs=array(
     <tr>
     <td class="listbx_subhdng"><?php echo Yii::t('students','Student Type');?></td>
     <td class="subhdng_nrmal"><?php echo $model->student_type; ?></td>
-    <td class="listbx_subhdng"><?php echo Yii::t('students','Selected Language');?></td>
-    <td class="subhdng_nrmal"><?php echo $model->selected_language; ?></td>
+        <td class="listbx_subhdng"><?php echo Yii::t('students','Student College Code');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->student_college_code; ?></td>
+
   </tr>
 
       <tr>
-    <td class="listbx_subhdng"><?php echo Yii::t('students','Student College Code');?></td>
-    <td class="subhdng_nrmal"><?php echo $model->student_college_code; ?></td>
-    <td class="listbx_subhdng">&nbsp;</td>
-    <td class="subhdng_nrmal">&nbsp;</td>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','Selected Language 1');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->selected_language; ?></td>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','Selected Language 2');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->selected_language_2; ?></td>
   </tr>
 
   <tr class="listbxtop_hdng">

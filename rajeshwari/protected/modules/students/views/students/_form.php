@@ -159,7 +159,7 @@ else
                 <td>&nbsp;</td>
                 <td><?php echo 'Student Type'; ?></td>
                 <td>&nbsp;</td>
-                <td><?php echo 'Selected Language'; ?></td>
+                <td>&nbsp;</td>
                 </tr>
  <tr>
                     <td valign="top">
@@ -227,9 +227,12 @@ else
                         <?php echo $form->error($model,'student_type'); ?>
                     </td>
                     <td>&nbsp;</td>
-                    <td> <?php echo $form->dropDownList($model,'selected_language',array('Kannada' => 'Kannada', 'English' => 'English', 'Hindi' => 'Hindi', 'Sanskrit' => 'Sanskrit'),array('empty' => 'Select Language')); ?>
-                        <?php echo $form->error($model,'selected_language'); ?></td>
+                    <td> &nbsp;</td>
                     </tr>
+
+  
+
+
 
                 <tr>
                 <td>&nbsp;</td>
@@ -328,6 +331,40 @@ else
                         <?php echo $form->error($model,'gender'); ?>
                     </td>
                 </tr>
+
+
+                <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
+                <tr>
+                <td valign="bottom"><?php echo 'Selected Language 1'; ?></td>
+                <td>&nbsp;</td>
+                <td valign="bottom"><?php echo 'Selected Language 2'; ?></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                </tr>
+
+                 <tr>
+                    <td valign="top">
+                    <?php echo $form->dropDownList($model,'selected_language',array('Kannada' => 'Kannada', 'English' => 'English', 'Hindi' => 'Hindi', 'Sanskrit' => 'Sanskrit'),array('empty' => 'Select Language')); ?>
+                        <?php echo $form->error($model,'selected_language'); ?>
+                       
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>
+                        <?php echo $form->dropDownList($model,'selected_language_2',array('Kannada' => 'Kannada', 'English' => 'English', 'Hindi' => 'Hindi', 'Sanskrit' => 'Sanskrit'),array('empty' => 'Select Language')); ?>
+                        <?php echo $form->error($model,'selected_language_2'); ?>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td> &nbsp;</td>
+                    </tr>
+
+
+                    
                 <tr>
                 	<td colspan="5">&nbsp;</td>
                 </tr>

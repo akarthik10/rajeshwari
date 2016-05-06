@@ -82,7 +82,7 @@ class Students extends CActiveRecord
 			array('first_name, admission_no,student_category_id', 'required',),
 			array('admission_no','unique'),
 			array('email','check'),
-			array('admission_no, class_roll_no, first_name, middle_name, last_name, gender, blood_group, birth_place, language, religion, address_line1, address_line2, city, state, email, photo_file_name, photo_content_type, status_description, medium_of_instruction, caste, aadhar_card_no, scholarship_code,identification_mark, vaccinated, place_of_stay, no_of_brothers, no_of_sisters, tc_given, tc_remarks, child_code, bank_account_no, student_type, selected_language, student_college_code ', 'length', 'max'=>255),
+			array('admission_no, class_roll_no, first_name, middle_name, last_name, gender, blood_group, birth_place, language, religion, address_line1, address_line2, city, state, email, photo_file_name, photo_content_type, status_description, medium_of_instruction, caste, aadhar_card_no, scholarship_code,identification_mark, vaccinated, place_of_stay, no_of_brothers, no_of_sisters, tc_given, tc_remarks, child_code, bank_account_no, student_type, selected_language, selected_language_2, student_college_code ', 'length', 'max'=>255),
 			array('admission_date, date_of_birth, created_at, updated_at', 'safe'),			
 			array('email','email'),
 			/*array(
@@ -98,7 +98,7 @@ class Students extends CActiveRecord
 			// Please remove those attributes that should not be searched.
 
 			array('photo_data', 'file', 'types'=>'jpg, gif, png', 'allowEmpty' => true, 'maxSize'=>716800, 'tooLarge'=>'File has to be smaller than 500KB'),
-			array('id, admission_no, parent_id, class_roll_no, admission_date, first_name, middle_name, last_name, batch_id, date_of_birth, gender, blood_group, birth_place, nationality_id, language, religion, student_category_id, address_line1, address_line2, city, state, pin_code, country_id, phone1, phone2, email, immediate_contact_id, is_sms_enabled, photo_file_name, photo_content_type, status_description, is_active, is_deleted, created_at, updated_at, has_paid_fees, photo_file_size, user_id, medium_of_instruction, caste, aadhar_card_no, scholarship_code,identification_mark, vaccinated, place_of_stay, no_of_brothers, no_of_sisters, tc_given, tc_remarks, child_code, bank_account_no, student_type, selected_language, student_college_code', 'safe', 'on'=>'search'),
+			array('id, admission_no, parent_id, class_roll_no, admission_date, first_name, middle_name, last_name, batch_id, date_of_birth, gender, blood_group, birth_place, nationality_id, language, religion, student_category_id, address_line1, address_line2, city, state, pin_code, country_id, phone1, phone2, email, immediate_contact_id, is_sms_enabled, photo_file_name, photo_content_type, status_description, is_active, is_deleted, created_at, updated_at, has_paid_fees, photo_file_size, user_id, medium_of_instruction, caste, aadhar_card_no, scholarship_code,identification_mark, vaccinated, place_of_stay, no_of_brothers, no_of_sisters, tc_given, tc_remarks, child_code, bank_account_no, student_type, selected_language, selected_language_2 student_college_code', 'safe', 'on'=>'search'),
 		);
 
 		if(defined("ADM_NO_FORMAT_CHECK") && ADM_NO_FORMAT_CHECK ) {
@@ -193,7 +193,8 @@ class Students extends CActiveRecord
 			 'child_code' => 'Child Code',
 			 'bank_account_no' => 'Bank Account No.',
 			 'student_type' => 'Student Type', 
-			 'selected_language' => 'Selected Language',
+			 'selected_language' => 'Selected Language 1',
+			 'selected_language_2' => 'Selected Language 2',
 			 'student_college_code' => 'Student College  Code'
 		);
 	}
@@ -259,6 +260,7 @@ class Students extends CActiveRecord
 		$criteria->compare('bank_account_no',$this->bank_account_no);
 		$criteria->compare('student_type',$this->student_type);
 		$criteria->compare('selected_language',$this->selected_language);
+		$criteria->compare('selected_language_2',$this->selected_language_2);
 		$criteria->compare('student_college_code',$this->student_college_code);
 
 		return new CActiveDataProvider($this, array(

@@ -157,8 +157,9 @@ else
                 <tr>
                 <td valign="bottom"><?php echo 'Course'; ?></td>
                 <td>&nbsp;</td>
+                <td><?php echo 'Student Type'; ?></td>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td><td>&nbsp;</td>
+                <td><?php echo 'Selected Language'; ?></td>
                 </tr>
  <tr>
                     <td valign="top">
@@ -221,8 +222,13 @@ else
                        
                     </td>
                     <td>&nbsp;</td>
+                    <td>
+                        <?php echo $form->dropDownList($model,'student_type',array('Hosteler' => 'Hosteler', 'Day Scholar' => 'Day Scholar'),array('empty' => 'Select Student Type')); ?>
+                        <?php echo $form->error($model,'student_type'); ?>
+                    </td>
                     <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td> <?php echo $form->dropDownList($model,'selected_language',array('Kannada' => 'Kannada', 'English' => 'English', 'Hindi' => 'Hindi', 'Sanskrit' => 'Sanskrit'),array('empty' => 'Select Language')); ?>
+                        <?php echo $form->error($model,'selected_language'); ?></td>
                     </tr>
 
                 <tr>
@@ -497,7 +503,7 @@ else
                     <td>&nbsp;</td>
                     <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','class_roll_no')); ?></td>
                     <td>&nbsp;</td>
-                    <td valign="bottom"></td>
+                    <td valign="bottom"><?php echo $form->labelEx($model,Yii::t('students','student_college_code')); ?></td>
                 </tr>
                 <tr>
                     <td valign="top">
@@ -510,7 +516,9 @@ else
                      <?php echo $form->error($model,'class_roll_no'); ?>
                     </td>
                     <td>&nbsp;</td>
-                    <td valign="top">
+                        <td valign="top">
+                        <?php echo $form->textField($model,'student_college_code',array('size'=>15,'maxlength'=>255)); ?>
+                        <?php echo $form->error($model,'student_college_code'); ?>
                     </td>
                 </tr>
 

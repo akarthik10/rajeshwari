@@ -2505,6 +2505,9 @@ CREATE TABLE `students` (
   `tc_remarks` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `child_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `bank_account_no` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `student_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `selected_language` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `student_college_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_students_on_admission_no` (`admission_no`(10)),
   KEY `index_students_on_first_name_and_middle_name_and_last_name` (`first_name`(10),`middle_name`(10),`last_name`(10))

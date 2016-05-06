@@ -188,6 +188,20 @@ $this->breadcrumbs=array(
     <td class="subhdng_nrmal"><?php echo $model->bank_account_no; ?></td>
   </tr>
 
+    <tr>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','Student Type');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->student_type; ?></td>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','Selected Language');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->selected_language; ?></td>
+  </tr>
+
+      <tr>
+    <td class="listbx_subhdng"><?php echo Yii::t('students','Student College Code');?></td>
+    <td class="subhdng_nrmal"><?php echo $model->student_college_code; ?></td>
+    <td class="listbx_subhdng">&nbsp;</td>
+    <td class="subhdng_nrmal">&nbsp;</td>
+  </tr>
+
   <tr class="listbxtop_hdng">
     <td><?php echo Yii::t('students','Emergeny Contact');?></td>
     <td>&nbsp;</td>

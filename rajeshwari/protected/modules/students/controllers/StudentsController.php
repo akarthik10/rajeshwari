@@ -447,6 +447,13 @@ public function actionDynamicbatch()
 			$criteria->condition=$criteria->condition.' and '.'gender = :gender';
 		    $criteria->params[':gender'] = $_REQUEST['Students']['gender'];
 		}
+
+		if(isset($_REQUEST['Students']['student_type']) and $_REQUEST['Students']['student_type']!=NULL)
+		{
+			$model->gender = $_REQUEST['Students']['student_type'];
+			$criteria->condition=$criteria->condition.' and '.'student_type = :student_type';
+		    $criteria->params[':student_type'] = $_REQUEST['Students']['student_type'];
+		}
 		
 		if(isset($_REQUEST['Students']['blood_group']) and $_REQUEST['Students']['blood_group']!=NULL)
 		{

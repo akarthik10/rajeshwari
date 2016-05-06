@@ -196,6 +196,19 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                                     </div>
                                 </li>
                                 <!-- End Gender Filter -->
+
+                                <!-- Student type Filter -->
+                                <li>
+                                    <div onClick="hide('student_type')" style="cursor:pointer;"><?php echo Yii::t('students','Student type');?></div>
+                                    <div id="student_type" style="display:none; width:243px; padding-top:0px; height:33px" class="drop">
+                                        <div class="droparrow" style="left:10px;"></div>
+                                        <?php
+                                        echo CHtml::activeDropDownList($model,'student_type',array('Hosteler' => 'Hosteler', 'Day Scholar' => 'Day Scholar'),array('prompt'=>'All')); 
+                                        ?>
+                                        <input type="submit" value="Apply" />
+                                    </div>
+                                </li>
+                                <!-- End Student type Filter -->
                                 
                                 <!-- Blood Group Filter -->
                                 <li>
@@ -372,6 +385,23 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 									?>
                                     <!-- END Gender Active Filter -->
                                     
+                                     <!-- Student type Active Filter -->
+                                    <?php 
+                                    if(isset($_REQUEST['Students']['student_type']) and $_REQUEST['Students']['student_type']!=NULL)
+                                    { 
+                                        $j++;
+                                        if($_REQUEST['Students']['student_type']=='Hosteler')
+                                        $styp='Hosteler';
+                                        else if($_REQUEST['Students']['student_type']=='Day Scholar')
+                                        $styp='Day Scholar';
+                                        else 
+                                        $styp = ''    ;
+                                    ?>
+                                        <li>Student type : <?php echo $styp?><a href="<?php echo Yii::app()->request->getUrl().'&Students[student_type]='?>"></a></li>
+                                    <?php 
+                                    }
+                                    ?>
+                                    <!-- END Student type Active Filter -->
                                     
                                     <!-- Blood Group Active Filter -->
                                     <?php 
@@ -1017,6 +1047,7 @@ $('body').click(function() {
 	$('#marital').hide();
 	$('#bloodgroup').hide();
 	$('#nationality').hide();
+    $('#student_type').hide();
 	if($("#dobtxt").val().length <=0)
 	{
 		$('#dob').hide();

@@ -517,8 +517,8 @@ else
                     </td>
                     <td>&nbsp;</td>
                         <td valign="top">
-                        <?php echo $form->textField($model,'student_college_code',array('size'=>15,'maxlength'=>255)); ?>
-                        <?php echo $form->error($model,'student_college_code'); ?>
+                        <?php echo $form->dropDownList($model,'student_college_code',array('CC101' => 'CC101', 'CC080' => 'CC080', 'CC170' => 'CC170'),array('empty' => 'Select College Code')); ?>
+                      <?php echo $form->error($model,'student_college_code'); ?>
                     </td>
                 </tr>
 

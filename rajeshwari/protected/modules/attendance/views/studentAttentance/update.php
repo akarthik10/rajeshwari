@@ -16,7 +16,7 @@ $this->menu=array(
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ui-style.css" />
 <?php 
 $this->beginWidget('zii.widgets.jui.CJuiDialog',array(
-                'id'=>'jobDialog'.$day.$emp_id,
+                'id'=>'jobDialog'.$day.'_'.$emp_id,
                 'options'=>array(
                     'title'=>Yii::t('attendance','Edit Leave'),
                     'autoOpen'=>true,

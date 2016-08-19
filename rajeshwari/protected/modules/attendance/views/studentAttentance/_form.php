@@ -31,9 +31,9 @@
 	<div class="row buttons">
 		<?php //echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
          <?php echo CHtml::ajaxSubmitButton(Yii::t('attendance','Save'),CHtml::normalizeUrl(array('StudentAttentance/Addnew','render'=>false)),array('success'=>'js: function(data) {
-						$("#td'.$day.$emp_id.'").text("");
-						$("#jobDialog123'.$day.$emp_id.'").html("<span class=\"abs\"></span>","");
-						$("#jobDialog'.$day.$emp_id.'").dialog("close");
+						$("#td'.$day."_".$emp_id.'").text("");
+						$("#jobDialog_a'.$day.'_'.$emp_id.'").html("<span class=\"abs\"></span>","");
+						$("#jobDialog'.$day.'_'.$emp_id.'").dialog("close");
 						window.location.reload();
                     }'),array('id'=>'closeJobDialog'.$day.$emp_id,'name'=>'save')); ?>
 	</div>

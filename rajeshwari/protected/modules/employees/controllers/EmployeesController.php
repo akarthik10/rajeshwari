@@ -120,7 +120,8 @@ class EmployeesController extends RController
 					$model->photo_file_name=$file->name;
 					$model->photo_content_type=$file->type;
 					$model->photo_file_size=$file->size;
-					$model->photo_data=file_get_contents($file->tempName);
+					$data = file_get_contents($file->tempName);
+					$model->photo_data=base64_encode($data);
 					  }
 				
 				
@@ -145,7 +146,7 @@ class EmployeesController extends RController
 			header('Content-length: '.$model->photo_file_size);
 			header('Content-Type: '.$model->photo_content_type);
 			header('Content-Disposition: attachment; filename='.$model->photo_file_name);
-			echo $model->photo_data;
+			echo base64_decode($model->photo_data);
 		}
 	public function actionRemove()
 	{
@@ -333,7 +334,8 @@ class EmployeesController extends RController
 				$model->photo_file_name=$file->name;
 				$model->photo_content_type=$file->type;
 				$model->photo_file_size=$file->size;
-				$model->photo_data=file_get_contents($file->tempName);
+				$data = file_get_contents($file->tempName);
+				$model->photo_data=base64_encode($data);
 			}
 			if($model->save())
 			{

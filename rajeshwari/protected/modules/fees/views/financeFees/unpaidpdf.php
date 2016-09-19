@@ -180,12 +180,8 @@ $this->breadcrumbs=array(
 	
 	$amount = 0;
 	//$j=0;
-	foreach($particulars as $particular)
-	 {
-	 
-	 $amount = $amount + $particular->amount;
+	
 	 $list  = FinanceFees::model()->findAll("fee_collection_id=:x and is_paid=:y", array(':x'=>$_REQUEST['collection'],':y'=>0));
-	}
 
 	/*if($j%2==0)
 		$class = 'class="odd"';	
@@ -196,7 +192,11 @@ $this->breadcrumbs=array(
 	$k = 1;
 	foreach($list as $list_1)
 	{
-		$student=Students::model()->findByAttributes(array('id'=>$list_1->student_id));
+		$student=Students::model()->findByAttributes(array('id'=>$list_1->student_id,'is_deleted'=>0,'is_active'=>1));
+                if($student==NULL)
+                {
+                    continue;
+                }
 		if($student==NULL || $student->is_active==0)
 		{
 			continue;
@@ -206,48 +206,48 @@ $this->breadcrumbs=array(
 			echo "<td>".$student->admission_no."</td>";
 			echo "<td style='padding-left:20px'>".$student->first_name.' '.$student->last_name."</td>";
 			echo "<td>";
-			
-				$check_admission_no = FinanceFeeParticulars::model()->findAllByAttributes(array('finance_fee_category_id'=>$collection->fee_category_id,'admission_no'=>$posts->admission_no));
-                if(count($check_admission_no)>0){ // If any particular is present for this student
-                    $adm_amount = 0;
-                    foreach($check_admission_no as $adm_no){
-                        $adm_amount = $adm_amount + $adm_no->amount;
-                    }
-                    $fees = $adm_amount;
-                    //echo $adm_amount.' '.$currency->config_value;
-                    $balance = 	$adm_amount - $list_1->fees_paid;
-                }
-                else{ // If any particular is present for this student category
-                    $check_student_category = FinanceFeeParticulars::model()->findAllByAttributes(array('finance_fee_category_id'=>$collection->fee_category_id,'student_category_id'=>$posts->student_category_id,'admission_no'=>''));
-                    if(count($check_student_category)>0){
-                        $cat_amount = 0;
-                        foreach($check_student_category as $stu_cat){
-                            $cat_amount = $cat_amount + $stu_cat->amount;
+
+                    $particular_present = true;
+                    $check_admission_no = FinanceFeeParticulars::model()->findAllByAttributes(array('finance_fee_category_id'=>$collection->fee_category_id,'admission_no'=>$student->admission_no));
+                    if(count($check_admission_no)>0){ // If any particular is present for this student
+                        $adm_amount = 0;
+                        foreach($check_admission_no as $adm_no){
+                            $adm_amount = $adm_amount + $adm_no->amount;
                         }
-                        $fees = $cat_amount;
-                        //echo $cat_amount.' '.$currency->config_value;
-                        $balance = 	$cat_amount - $list_1->fees_paid;		
+                        $fees = $adm_amount;
+                        //echo $adm_amount.' '.$currency->config_value;
+                        $balance =  $adm_amount - $list_1->fees_paid;
                     }
-                    else{ //If no particular is present for this student or student category
-                        $check_all = FinanceFeeParticulars::model()->findAllByAttributes(array('finance_fee_category_id'=>$collection->fee_category_id,'student_category_id'=>NULL,'admission_no'=>''));
-                        if(count($check_all)>0){
-                            $all_amount = 0;
-                            foreach($check_all as $all){
-                                $all_amount = $all_amount + $all->amount;
+                    else{ // If any particular is present for this student category
+                        $check_student_category = FinanceFeeParticulars::model()->findAllByAttributes(array('finance_fee_category_id'=>$collection->fee_category_id,'student_category_id'=>$student->student_category_id,'admission_no'=>''));
+                        if(count($check_student_category)>0){
+                            $cat_amount = 0;
+                            foreach($check_student_category as $stu_cat){
+                                $cat_amount = $cat_amount + $stu_cat->amount;
                             }
-                            $fees = $all_amount;
-                            //echo $all_amount.' '.$currency->config_value;
-                            $balance = 	$all_amount - $list_1->fees_paid;
+                            $fees = $cat_amount;
+                            //echo $cat_amount.' '.$currency->config_value;
+                            $balance =  $cat_amount - $list_1->fees_paid;       
                         }
-                        else{
-                            echo '-'; // If no particular is found.
+                        else{ //If no particular is present for this student or student category
+                            $check_all = FinanceFeeParticulars::model()->findAllByAttributes(array('finance_fee_category_id'=>$collection->fee_category_id,'student_category_id'=>NULL,'admission_no'=>''));
+                            if(count($check_all)>0){
+                                $all_amount = 0;
+                                foreach($check_all as $all){
+                                    $all_amount = $all_amount + $all->amount;
+                                }
+                                $fees = $all_amount;
+                                //echo $all_amount.' '.$currency->config_value;
+                                $balance =  $all_amount - $list_1->fees_paid;
+                            }
+                            else{
+                                echo '-'; // If no particular is found.
+                                $particular_present = false;
+                            }
                         }
                     }
-                }
-            if($fees)	
-                echo $currency->config_value.' '.$fees;
-            else
-                echo '-';
+                if($fees && $particular_present)    
+                    echo $currency->config_value.' '.$fees;         
 				
 			echo "</td>";
 			echo "<td>";

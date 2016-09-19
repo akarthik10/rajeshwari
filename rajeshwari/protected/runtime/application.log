@@ -6095,3 +6095,62 @@ Stack trace:
 #16 E:\xampp\htdocs\rajeshwari\rajeshwari\core\base\CApplication.php(158): CWebApplication->processRequest()
 #17 E:\xampp\htdocs\rajeshwari\rajeshwari\index.php(51): CApplication->run()
 #18 {main} REQUEST_URI=/rajeshwari/rajeshwari/index.php?r=report/default/compare_launch
+2016/09/13 14:21:13 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'start_date' in 'order clause'. The SQL statement executed was: SELECT * FROM `courses` `t` WHERE is_deleted = 0 ORDER BY start_date desc.
+2016/09/13 14:21:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'start_date' in 'order clause'' in C:\xampp\htdocs\rajeshwari\rajeshwari\core\db\CDbCommand.php:516
+Stack trace:
+#0 C:\xampp\htdocs\rajeshwari\rajeshwari\core\db\CDbCommand.php(374): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\rajeshwari\rajeshwari\core\db\ar\CActiveRecord.php(1308): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\rajeshwari\rajeshwari\core\db\ar\CActiveRecord.php(1428): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\rajeshwari\rajeshwari\protected\modules\students\views\students\_form.php(167): CActiveRecord->findAll(Array)
+#4 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CBaseController.php(119): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CBaseController.php(88): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(866): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\rajeshwari\rajeshwari\protected\modules\students\views\students\update.php(21): CController->renderPartial('_form', Array)
+#8 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CBaseController.php(119): require('C:\\xampp\\htdocs...')
+#9 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CBaseController.php(88): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(866): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#11 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(779): CController->renderPartial('update', Array, true)
+#12 C:\xampp\htdocs\rajeshwari\rajeshwari\protected\modules\students\controllers\StudentsController.php(349): CController->render('update', Array)
+#13 [internal function]: StudentsController->actionUpdate('1008')
+#14 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\actions\CAction.php(104): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#15 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(StudentsController), Object(ReflectionMethod), Array)
+#16 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(300): CInlineAction->runWithParams(Array)
+#17 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#18 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\filters\CFilter.php(41): CFilterChain->run()
+#19 C:\xampp\htdocs\rajeshwari\rajeshwari\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#20 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#21 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#22 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(283): CFilterChain->run()
+#23 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CWebApplication.php(277): CController->run('update')
+#25 C:\xampp\htdocs\rajeshwari\rajeshwari\core\web\CWebApplication.php(136): CWebApplication->runController('students/studen...')
+#26 C:\xampp\htdocs\rajeshwari\rajeshwari\core\base\CApplication.php(158): CWebApplication->processRequest()
+#27 C:\xampp\htdocs\rajeshwari\rajeshwari\index.php(51): CApplication->run()
+#28 {main} REQUEST_URI=/rajeshwari/rajeshwari/index.php?r=students/students/update&id=1008
+2016/09/13 14:22:00 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".
+2016/09/19 03:41:46 [error] [exception.HTML2PDF_exception] <span style="color: #AA0000; font-weight: bold;">ERREUR n°5</span><br>Fichier : C:\xampp\htdocs\rajeshwari\rajeshwari\protected\vendors\html2pdf\_class\parsingHtml.class.php<br>Ligne : 218<br><br>Code HTML non valide, toutes les balises doivent être fermées.<br>Etat : <pre>Array
+(
+    [0] => div
+)
+</pre> REQUEST_URI=/rajeshwari/rajeshwari/index.php?r=fees/FinanceFees/unpaidpdf&batch=1&collection=1
+2016/09/19 03:55:14 [error] [exception.HTML2PDF_exception] <span style="color: #AA0000; font-weight: bold;">ERREUR n°1</span><br>Fichier : C:\xampp\htdocs\rajeshwari\rajeshwari\protected\vendors\html2pdf\html2pdf.class.php<br>Ligne : 1251<br><br>La balise <b>&lt;SCRIPT&gt;</b> n'existe pas encore.<br><br>Si vous voulez la rajouter, vous devez créer les méthodes <b>o_SCRIPT</b> (pour l'ouverture) et <b>c_SCRIPT</b> (pour la fermeture) en suivant le modèle des balises existantes.<br><br>De plus, si vous créez ces méthodes, n'hésitez pas à en faire profiter tout le monde en m'écrivant sur webmaster@html2pdf.fr afin qu'elles se retrouvent dans la prochaine version d'HTML2PDF.<br><br>HTML : ...&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;... REQUEST_URI=/rajeshwari/rajeshwari/index.php?r=fees/FinanceFees/unpaidpdf&batch=1&collection=1
+2016/09/19 03:57:10 [error] [exception.HTML2PDF_exception] <span style="color: #AA0000; font-weight: bold;">ERREUR n°4</span><br>Fichier : C:\xampp\htdocs\rajeshwari\rajeshwari\protected\vendors\html2pdf\_class\parsingHtml.class.php<br>Ligne : 119<br><br>Code HTML non valide, les balises ne sont pas fermées dans le bon ordre.<br>Etat : <pre>Array
+(
+    [0] => div
+)
+</pre><br><br>HTML : ...adding-top:30px;&quot;&gt;
+
+        &lt;/td&gt;
+        &lt;td&gt;
+        &lt;a href=&quot;/r... REQUEST_URI=/rajeshwari/rajeshwari/index.php?r=fees/FinanceFees/unpaidpdf&batch=1&collection=1
+2016/09/19 03:57:12 [error] [exception.HTML2PDF_exception] <span style="color: #AA0000; font-weight: bold;">ERREUR n°4</span><br>Fichier : C:\xampp\htdocs\rajeshwari\rajeshwari\protected\vendors\html2pdf\_class\parsingHtml.class.php<br>Ligne : 119<br><br>Code HTML non valide, les balises ne sont pas fermées dans le bon ordre.<br>Etat : <pre>Array
+(
+    [0] => div
+)
+</pre><br><br>HTML : ...adding-top:30px;&quot;&gt;
+
+        &lt;/td&gt;
+        &lt;td&gt;
+        &lt;a href=&quot;/r... REQUEST_URI=/rajeshwari/rajeshwari/index.php?r=fees/FinanceFees/unpaidpdf&batch=1&collection=1

@@ -20,6 +20,7 @@ class SmsSettings extends CActiveRecord
 	public $enable_fees;
 	public $enable_library;
 
+
 	protected $smsuid="";
 	protected $smspin="";
 	protected $smsroute="";
@@ -284,8 +285,9 @@ class SmsSettings extends CActiveRecord
 	
 
 		
-			$tempid="44445";
-			$message = "Dear Parents, Your ward $name has been admitted to $collegename. The admission no. is $admission_no . Thank you.  From: Rajeshwari Higher Primary English Medium School, Yadgiri.";
+			$tempid="61015";
+			$message = "Dear Parents, Your ward $name has been admitted to $collegename. The admission no. is $admission_no . Thank you. From: Lingeri Konappa Women's PU College, Yadgiri.";
+
 
 			// $domain="www.bulksmsgateway.in";
 			// $priority="3";// 1-Normal,2-Priority,3-Marketing
@@ -339,10 +341,10 @@ class SmsSettings extends CActiveRecord
 	{
 		
 		
-			$tempid="45142";
+			$tempid="61013";
                         $today = date("j-M-Y");
-			//$message = "Fee: Dear $name, Fee paid Rs. $fees. Balance Rs. $balance. Thank you.";
-                        $message = "Dear Parent, We have received an amount of Rs. $fees on $today from your ward $name. Thank you. From: Rajeshwari Higher Primary English Medium School, Yadgiri.";
+			$message = "Dear Parent, We have received an amount of Rs. $fees on $today from your ward $name. Thank you. From: Lingeri Konappa Women's PU College, Yadgiri.";
+			
 			
 
 			// $domain="www.bulksmsgateway.in";
@@ -399,8 +401,9 @@ class SmsSettings extends CActiveRecord
 	
 
 		
-			$tempid="44444";
-			$message = "Results Declared: Dear #FIELD2#, The result of examination #FIELD3# is : #FIELD4#. Total #FIELD5#. Thank you.  From: Rajeshwari Higher Primary English Medium School, Yadgiri.";
+			$tempid="61016";
+			$message = "Results Declared: Dear #FIELD2#, The result of examination #FIELD3# is : #FIELD4#. Total #FIELD5#. Thank you. From: Lingeri Konappa Women's PU College, Yadgiri.";
+
 
 			// $domain="www.bulksmsgateway.in";
 			// $priority="3";// 1-Normal,2-Priority,3-Marketing
@@ -457,9 +460,9 @@ class SmsSettings extends CActiveRecord
 	{
 		
 		
-			$tempid="60596";
+			$tempid="61018";
 			//$message = "Fee: Dear $name, Fee paid Rs. $fees. Balance Rs. $balance. Thank you.";
-                        $message = "Dear Parents, as per our records you are requested to pay the due fees. Please pay it as soon as possible. Ignore if already paid. From: Rajeshwari Higher Primary English Medium School, Yadgiri.";
+                        $message = "Dear Parents, as per our records you are requested to pay the due fees. Please pay it as soon as possible. Ignore if already paid. Thank you. From: Lingeri Konappa Women's PU College, Yadgiri.";
 			
 
 			// $domain="www.bulksmsgateway.in";
@@ -509,9 +512,9 @@ class SmsSettings extends CActiveRecord
 		{
 		
 		
-			$tempid="60611";
+			$tempid="61017";
 			//$message = "Fee: Dear $name, Fee paid Rs. $fees. Balance Rs. $balance. Thank you.";
-                        $message = "Dear Parents, This is to inform you that your ward didn't attend classes on ".$date.". From: Rajeshwari Higher Primary English Medium School, Yadgiri.";
+                        $message = "Dear Parents, This is to inform you that your ward didn't attend classes on $date. Thank you. From: Lingeri Konappa Women's PU College, Yadgiri.";
 			
 
 			// $domain="www.bulksmsgateway.in";

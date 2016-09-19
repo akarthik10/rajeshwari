@@ -57,12 +57,11 @@ $('.search-form form').submit(function(){
     <?php echo CHtml::link('<span>'.Yii::t('Subjects','Add Subjects To Batch').'</span>', array('#'),array('id'=>'add_subjects','class'=>'addbttn')) ?>
     
 	</li>
+  <!-- Electives not needed
     <li>
    <?php echo CHtml::link('<span>'.Yii::t('Exam','Electives').'</span>', array('/courses/electives','id'=>$_REQUEST['id']),array('class'=>'addbttn last')) ?>
-
-    
-	</li>
-    
+  	</li>
+  -->
     </ul>
     <div class="clear"></div>
     

@@ -32,11 +32,10 @@ along with Open-School.  If not, see <http://www.gnu.org/licenses/>.*/
 
 error_reporting(E_ERROR);
 define('ENV', 'production');
-define('BASEURL', 'http://localhost/rajeshwari/rajeshwari');
+define('BASEURL', 'http://localhost:999/rajeshwari/rajeshwari');
 
 //Database connections
-define('DB_CONNECTION','mysql:host=localhost;port=3306;dbname=openlearn');
+define('DB_CONNECTION','mysql:host=localhost;port=3306;dbname=new_school_db');
 define('DB_USER','root');
 define('DB_PWD','');
 define('FEES_ENABLED', false);
-

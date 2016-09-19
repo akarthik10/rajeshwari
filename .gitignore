@@ -1,3 +1,8 @@
 rajeshwari/protected/config/environment.php
 rajeshwari/protected/runtime/application.log
 *.log
+*.log
+*.pdf
+rajeshwari/uploadedfiles/student_document/1004/AuwTLQLS.JPG
+*.log
+rajeshwari/protected/runtime/application.log

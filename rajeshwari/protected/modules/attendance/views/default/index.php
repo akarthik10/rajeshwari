@@ -16,11 +16,12 @@ $this->breadcrumbs=array(
             <div class="edit_bttns" style="width:350px; top:30px; right:-15px;">
             	<ul>
                 <li>
-           <?php  echo CHtml::ajaxLink('<span>'.Yii::t('attendance','Student Attendance').'</span>',array('/site/explorer','widget'=>'s_a','rurl'=>'attendance/studentAttentance'),array('update'=>'#explorer_handler'),array('id'=>'explorer_change','class'=>'addbttn')); ?>
+           <?php echo CHtml::ajaxLink('<span>'.Yii::t('attendance','Student Attendance').'</span>',array('/site/explorer','widget'=>'2','rurl'=>'attendance/studentAttentance'),array('update'=>'#explorer_handler'),array('id'=>'explorer_change','class'=>'gs_ico')); ?>
            		</li> 
                  <li>
                  <?php echo CHtml::link('<span>'.Yii::t('attendance','Employee Attendance').'</span>',array('/attendance/employeeAttendances'),array('class'=>'addbttn'));?>
                  </li>
+                
                  </ul>
            </div> 
             

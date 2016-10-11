@@ -6154,3 +6154,10 @@ Stack trace:
         &lt;/td&gt;
         &lt;td&gt;
         &lt;a href=&quot;/r... REQUEST_URI=/rajeshwari/rajeshwari/index.php?r=fees/FinanceFees/unpaidpdf&batch=1&collection=1
+2016/09/30 04:21:05 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".
+2016/09/30 04:21:50 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".
+2016/09/30 04:22:13 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".
+2016/09/30 04:22:20 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".
+2016/09/30 04:23:14 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".
+2016/09/30 04:23:40 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".
+2016/09/30 04:24:18 [warning] [application] Failed to set unsafe attribute "password" of "ConfigForm".

@@ -123,6 +123,8 @@ if(isset($_REQUEST['examid']))
 					$total_of_max_marks =0;
 					$result = "PASS";
 					$result_r = "";
+					$isAbsent = false;
+					
                     foreach($exams as $exam) // Creating subject column(s)
 					{
 					
@@ -145,7 +147,7 @@ if(isset($_REQUEST['examid']))
                                     						    // echo $score->marks;
                                     						    $message .= $subject->name.' :'. $score->marks . "\r\n";
                                     						    if($score->marks==0){
-                                    						    	$result_r .= $subject->name . ': A;'; 
+                                    						    	$result_r .= $subject->name . ': Ab;'; 
                                     						    }
                                     						    else{
                                     						    	$result_r .= $subject->name . ': '.round($score->marks).'/'.round($exam->maximum_marks). ";" ;
@@ -157,7 +159,8 @@ if(isset($_REQUEST['examid']))
                                     							$result_r .= "-";
                                     						}
 														} 
-														  else if($examgroup->exam_type == 'Grades') {
+														  else if($examgroup->exam_type == 'Grades' || $examgroup->exam_type == 'Marks And Grades') {
+															$isGradeAvailable = true;
 														  	$grd = 1;
 														   $grade_value = 'No Grade';
 														  	$current_max = 0;
@@ -188,46 +191,28 @@ if(isset($_REQUEST['examid']))
 																	{
 																		$glevel = " No Grades" ;
 																	} 
-																$message .= $subject->name.' :'. $grade_value . "\r\n";
-																$result_r .= $subject->name.' :'. $grade_value . "  ";
-																 $total += round($score->marks);
+															if($score->marks!=NULL)
+                                    						{
+                                    						    // echo $score->marks;
+                                    						    $message .= $subject->name.' :'. $score->marks . "\r\n";
+                                    						    if($score->marks==0){
+                                    						    	$result_r .= $subject->name . ': Ab;';
+																	$isAbsent = true;
+                                    						    }
+                                    						    else{
+                                    						    	$result_r .= $subject->name . ': '.round($score->marks).'/'.round($exam->maximum_marks).' ('. $grade_value.");" ;
+                                    						    }
+                                    						    $total += round($score->marks);
                                     						    $total_of_max_marks+=round($exam->maximum_marks);
+                                    						    // if($score->is_failed == 1){ $result = 'FAIL'; }
+                                    						} else {
+                                    							$result_r .= "-";
+                                    						}
 
 																
 																
 																} 
-														   else if($examgroup->exam_type == 'Marks And Grades'){
-														   	$grd = 1;
-															 foreach($grades as $grade)
-																{
-																	
-																 if($grade->min_score <= $score->marks)
-																	{	
-																		$grade_value =  $grade->name;
-																	}
-																	else
-																	{
-																		$t--;
-																		
-																		continue;
-																		
-																	}
 
-																break;
-																
-																	
-																} 
-
-
-																if($t<=0) 
-																	{
-																		// echo $score->marks." & No Grades" ;
-																	}
-
-																	$message .= $subject->name.' :'. $grade_value . "\r\n";
-																	$result_r .= $subject->name.' :'. $grade_value;
-																$total = '-';
-																 } 
 
 
 										
@@ -256,6 +241,7 @@ if(isset($_REQUEST['examid']))
 						{
 							$result_r = "-";
 						}
+						
 						$total_p=$total.'/'.$total_of_max_marks;
 						if($grd == 1){
 														  	$current_max = 0;
@@ -278,7 +264,11 @@ if(isset($_REQUEST['examid']))
 																		
 																	}
 																}
-																$grde = $grade_value;
+																if($isAbsent){
+																	$grde = "No Grade";
+																}else{
+																	$grde = $grade_value;
+																}
 																$total_p .= ' ('. $grde.')';
 						}
 						

@@ -398,6 +398,33 @@ return array(
             )
         ),
     ),
+	
+	'ePdfL' => array(
+        'class'         => 'ext.yii-pdf.EYiiPdf',
+        'params'        => array(
+            'mpdf123'     => array(
+                'librarySourcePath' => 'application.vendors.mpdf.*',
+                'constants'         => array(
+                    '_MPDF_TEMP_PATH' => Yii::getPathOfAlias('application.runtime'),
+                ),
+                'class'=>'mpdf', // the literal class filename to be loaded from the vendors folder
+               
+            ),
+            'HTML2PDF' => array(
+                'librarySourcePath' => 'application.vendors.html2pdf.*',
+                'classFile'         => 'html2pdf.class.php', // For adding to Yii::$classMap
+                'defaultParams'     => array( // More info: http://wiki.spipu.net/doku.php?id=html2pdf:en:v4:accueil
+                    'orientation' => 'L', // landscape or portrait orientation
+                    'format'      => 'A4', // format A4, A5, ...
+                    'language'    => 'en', // language: fr, en, it ...
+                    'unicode'     => true, // TRUE means clustering the input text IS unicode (default = true)
+                    'encoding'    => 'UTF-8', // charset encoding; Default is UTF-8
+                    'marges'      => array(5, 5, 5, 8), // margins by default, in order (left, top, right, bottom)
+                )
+            )
+        ),
+    ),
+
 	// Pdf extension Ends
                  
 	       

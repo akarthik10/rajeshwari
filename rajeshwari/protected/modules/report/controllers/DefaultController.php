@@ -460,7 +460,7 @@ class DefaultController extends RController
         $pdf_name = Batches::model()->findByAttributes(array('id'=>$_REQUEST['id']));
 		$pdf_name = $pdf_name->name.' Assessment Report.pdf';
         # HTML2PDF has very similar syntax
-        $html2pdf = Yii::app()->ePdf->HTML2PDF();
+        $html2pdf = Yii::app()->ePdfL->HTML2PDF();
 
         $html2pdf->WriteHTML($this->renderPartial('assesspdf', array('model'=>$this->loadModel($_REQUEST['examid'])), true));
         $html2pdf->Output($pdf_name);
@@ -638,7 +638,8 @@ class DefaultController extends RController
 			$to = '';
 		 	foreach ($attendances as $attendance){
 			
-				$guardian = Guardians::model()->findByAttributes(array('ward_id'=>$attendance->student_id));
+				$student=Students::model()->findByPk($attendance->student_id);
+				$guardian = Guardians::model()->findByPk($student->ward_id);
 				
 				if(count($guardian)!='0'){ // Check if guardian added
 					if($guardian->mobile_phone){ //Checking if phone number is provided
@@ -647,6 +648,7 @@ class DefaultController extends RController
 					
 				
 			 	} // End check whether students are present in the batch.
+			 	
 			 }
 
 			 $pieces = explode("-", $date);

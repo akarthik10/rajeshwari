@@ -26,6 +26,7 @@ class SmsSettings extends CActiveRecord
 	protected $smsroute="";
 	protected $smssender="";
 
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return SmsSettings the static model class

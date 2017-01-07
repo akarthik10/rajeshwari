@@ -131,16 +131,33 @@ $(document).ready(function() {
 <div class="overview">
 	<div class="overviewbox ovbox1">
     	<h1><?php echo Yii::t('students','<strong>Total Students</strong>');?></h1>
-  <!--<?php /* $tot =   Students::model()->countByAttributes(array('is_active'=> 1,'is_deleted'=>0));*/ ?>-->
-  <?php $tot =  Students::model()->count(array(
-    'condition' => 'is_deleted=:is_deleted',
-    'select' => 'count(distinct admission_no)',
-    'distinct' => true,
-    'params' => array(
-        ":is_deleted" => 0
-    ),
-        )) ; ?>
-       <div class="ovrBtm"><?php echo $tot ?></div>
+        <?php  
+
+$cur_year = date("Y"); 
+$last_year = $cur_year-1;
+$last_date = $last_year."-03-01";
+$cur_date = $cur_year."-06-30";
+
+$query = "SELECT count(*) AS total_students FROM students where is_active =1 AND is_deleted=0 AND batch_id IN (SELECT id 
+FROM  batches 
+WHERE  start_date>'".$last_date.
+"' AND  end_date<'".$cur_date.
+"' AND is_active = 1
+AND  is_deleted = 0) ";
+
+$table=Yii::app()->db->createCommand($query)->queryAll();
+
+foreach ($table as $row) {
+        
+             $tot=$row["total_students"];
+             
+}
+
+
+?>
+
+
+        <div class="ovrBtm"><?php echo $tot ?></div>
     </div>
     <div class="overviewbox ovbox2">
     	<h1><?php echo Yii::t('students','<strong>New Admissions</strong>');?></h1>

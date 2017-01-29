@@ -720,7 +720,7 @@ public function actionSendSMSFeeReminder(){
 			foreach ($unpaid_students as $unpaid_student){
 				//echo 'Student ID: '.$unpaid_student->student_id.'<br/>';
 				$student=Students::model()->findByAttributes(array('id'=>$unpaid_student->student_id));
-				$guardian = Guardians::model()->findByAttributes(array('ward_id'=>$student->id));
+				$guardian = Guardians::model()->findByAttributes(array('id'=>$student->parent_id));
 				/*echo 'Name: '.$student->first_name.'<br/>';
 				echo 'Phone 1: '.$student->phone1.'<br/>';*/
 				

@@ -24,6 +24,7 @@ function details(id)
 
 function rowdelete(id)
 {
+	 
 	 $("#batchrow"+id).fadeOut("slow");
 }
 
@@ -92,7 +93,7 @@ function rowdelete(id)
           <!--class="cbtablebx_topbg"  class="sub_act"-->
 		  <tr class="pdtab-h">
 			<td align="center">Batch Name</td>
-            <td align="center">No.of Students</td>
+            
 			<td align="center">Start Date</td>
 			<td align="center">End Date</td>
 			
@@ -113,7 +114,7 @@ function rowdelete(id)
 					
 						
 					}
-					echo '<td align="center">'.count(Students::model()->findAllByAttributes(array('batch_id'=>$batch_1->id))).'</td>';
+					
 					echo '<td align="center">'.$batch_1->start_date.'</td>';
 					echo '<td align="center">'.$batch_1->end_date.'</td>';
 					

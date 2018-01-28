@@ -1,4 +1,3 @@
-
 <style>
 
 .tableinnerlist{
@@ -43,7 +42,6 @@
       if($currency->config_value == "₹"){
       $currency->config_value = '<img src="images/rupee_symbol.png" width="8">';                 
     } 
-
 ?>
 
 <table width="680" border="1" bgcolor="#f9feff">
@@ -78,19 +76,24 @@
     <td width="650" style="border-bottom:#ccc 1px solid; padding:10px 20px;">
         <table  border="0" cellspacing="0" cellpadding="0">
             <tr>
-                <td width="550" style="padding:2px 0px;"><?php echo Yii::t('fees','Reciept No'); ?>:<?php echo $receipt_no;?><?php if(isset($receipt_type) && $receipt_type=="student_copy"){ echo " (student copy)";} else if(isset($receipt_type) && $receipt_type=="office_copy"){echo " (office copy)"; } ?></td>
+              <td width="550" style="padding:2px 0px;">
+<!--<?php echo Yii::t('fees','Receipt No'); ?><?php echo $receipt_no;?>-->
+
+<?php if(isset($receipt_type) && $receipt_type=="student_copy"){ echo " (student copy)";} else if(isset($receipt_type) && $receipt_type=="office_copy"){echo " (office copy)"; } ?></td>
                 <td>
-                    <?php echo Yii::t('fees','Date'); ?>: <?php 
+                    <?php echo Yii::t('fees','Print Date'); ?>: <?php 
                     $settings=UserSettings::model()->findByAttributes(array('user_id'=>Yii::app()->user->id));
                     if($settings!=NULL)
                     {   
                     $date1=date($settings->displaydate,time());
-                    echo $date1;        
+                    $date1=date_create($date1);
+echo date_format($date1,"d/m/Y");
                     }
                     else
                     echo date('d/m/Y');
 
-                            $finance_fees = FinanceFees::model()->findByAttributes(array('fee_collection_id' => $_REQUEST['collection'], 'student_id' => $_REQUEST['id']));
+                            $finance_fees = FinanceFees::model()->findByAttributes(array('fee_collection_id' => $_REQUEST['collection'], 'student_id' => $id));
+
         if($finance_fees != NULL)
         {
             if($settings!=NULL)
@@ -122,12 +125,12 @@
                 <td style="padding:2px 0px;"><?php echo Yii::t('fees','Course'); ?>:<?php echo $batch->course123->course_name; ?></td>
                 <td style="padding:2px 0px;"><?php echo Yii::t('fees','Batch'); ?>:<?php echo $batch->name; ?></td>
             </tr>
-           <!-- <tr>
+          <tr>
                 <td style=" padding:4px 0px;">
                 <?php echo Yii::t('fees','Address'); ?>:<?php echo $student->address_line1.' , '.$student->city.' , '.$student->state;?>
                 </td>
-                <td style="padding:5px 0px;"><?php echo Yii::t('fees','Last transaction'); ?>: <?php echo $latestdate; ?></td>
-            </tr> -->
+                <td style="padding:5px 0px;"><?php echo Yii::t('fees','Last transaction'); ?>: <?php $date=date_create($latestdate); echo date_format($date,"d/m/Y");?></td>
+            </tr>
             <tr>
                  <?php 
                                     if($guard->last_name!=NULL or $guard->first_name!=NULL)
@@ -238,7 +241,7 @@
             <table width="750" border="0" cellspacing="0" cellpadding="0" style="padding:3px 0px;">
               <tr>
                 <td width="20"></td>
-                <td width="200" align="left"><?php echo 'Month: '.date('F',strtotime($collection->start_date));?></td>
+                <td width="200" align="left"><?php echo 'Month: '.date('F Y');?></td>
                 <td width="200">&nbsp;</td>
                 <td width="280" align="left"><?php echo Yii::t('fees','Signature'); ?>:</td>
               </tr>

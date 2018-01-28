@@ -1,5 +1,4 @@
 
-
 <style>
 
 .tableinnerlist{
@@ -38,11 +37,11 @@
     $collection = FinanceFeeCollections::model()->findByAttributes(array('id'=>$collection_id));
     $category = FinanceFeeCategories::model()->findByAttributes(array('id'=>$collection->fee_category_id));
    $list  = FinanceTransaction::model()->findByAttributes(array('id'=>$transaction_id));
-
    $guard=Guardians::model()->findByAttributes(array('id'=>$student->parent_id));
     //$particulars = FinanceFeeParticulars::model()->findAll("finance_fee_category_id=:x", array(':x'=>$collection->fee_category_id));  
     $batch=Batches::model()->findByAttributes(array('id'=>$batch_id));
     $currency=Configurations::model()->findByPk(5);
+
       if($currency->config_value == "₹"){
       $currency->config_value = '<img src="images/rupee_symbol.png" width="8">';                 
     } 
@@ -83,12 +82,13 @@
             <tr>
                 <td width="450" style="padding:2px 0px;"><?php echo Yii::t('fees','Transaction no'); ?>:<?php echo $transaction_id;?><?php if(isset($receipt_type) && $receipt_type=="student_copy"){ echo " (student copy)";} else if(isset($receipt_type) && $receipt_type=="office_copy"){echo " (office copy)"; } ?></td>
                 <td>
-                    <?php echo Yii::t('fees','Date'); ?>: <?php 
+                    <?php echo Yii::t('fees','Print Date'); ?>: <?php 
                     $settings=UserSettings::model()->findByAttributes(array('user_id'=>Yii::app()->user->id));
                     if($settings!=NULL)
                     {   
                     $date1=date($settings->displaydate,time());
-                    echo $date1;        
+                      echo date('d/m/Y');
+     
                     }
                     else
                     echo date('d/m/Y');
@@ -125,12 +125,7 @@
                 <td style="padding:2px 0px;"><?php echo Yii::t('fees','Course'); ?>:<?php echo $batch->course123->course_name; ?></td>
                 <td style="padding:2px 0px;"><?php echo Yii::t('fees','Batch'); ?>:<?php echo $batch->name; ?></td>
             </tr>
-           <!-- <tr>
-                <td style=" padding:4px 0px;">
-                <?php echo Yii::t('fees','Address'); ?>:<?php echo $student->address_line1.' , '.$student->city.' , '.$student->state;?>
-                </td>
-                <td style="padding:5px 0px;"><?php echo Yii::t('fees','Last transaction'); ?>: <?php echo $latestdate; ?></td>
-            </tr> -->
+        
             <tr>
                  <?php 
                                     if($guard->last_name!=NULL or $guard->first_name!=NULL)
@@ -141,6 +136,13 @@
                 <td><?php echo Yii::t('fees','Fee Category'); ?>: <?php echo $category->name; ?></td>
                 <td><?php echo Yii::t('fees','Guardian'); ?>: <?php echo $pname; ?></td>
             </tr>
+    <tr>
+                        <td style="padding:5px 0px;"><?php echo Yii::t('fees','Payment Date'); ?>: <?php 
+$date=date_create($list->transaction_date);
+echo date_format($date,"d/m/Y");
+ ?></td>
+            </tr> 
+
         </table>
     
     </td>
